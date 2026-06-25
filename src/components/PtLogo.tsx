@@ -1,0 +1,247 @@
+/**
+ * PHÚC THỊNH Logo Components
+ *
+ * Hệ thống logo rõ ràng, mỗi context dùng đúng 1 file:
+ *   - /pt-loader-logo.svg : dạng 2 dòng (icon trên + chữ PT dưới) → CinematicLoader
+ *   - /pt-header-logo.svg : chỉ icon lục giác + 2 cá heo → Header, Footer, button, badge
+ *
+ * API:
+ *   - <PtLogo variant="full" />  : dùng pt-loader-logo.svg (2 dòng, có chữ PT)
+ *   - <PtLogo variant="icon" />  : dùng pt-header-logo.svg (chỉ icon)
+ *   - <HexMark />                : alias cho variant="icon", dùng cho hero big logo
+ *   - <PtWordmark />             : icon + text "Phúc Thịnh" thật (typography riêng)
+ */
+import * as React from "react";
+
+type Variant = "icon" | "full";
+type Props = {
+  variant?: Variant;
+  className?: string;
+  size?: number;
+  height?: number;
+  style?: React.CSSProperties;
+};
+
+/** Map variant → file SVG tương ứng */
+const SRC: Record<Variant, string> = {
+  icon: "/pt-header-logo.svg",
+  full: "/pt-loader-logo.svg",
+};
+
+/** Component chính — chọn đúng file SVG theo variant */
+export function PtLogo({
+  variant = "icon",
+  className,
+  size,
+  height = 32,
+  style,
+}: Props) {
+  // SVG gốc aspect ratio:
+  //   - pt-header-logo.svg (chỉ icon): viewBox 3508×2480 → ~1.41:1 (rộng:cao)
+  //   - pt-loader-logo.svg (2 dòng):   viewBox 3508×2480 → ~1.41:1 (rộng:cao)
+  // Dùng height cố định, width tự co theo aspect ratio
+  const isFull = variant === "full";
+  // pt-loader-logo: chiều ngang hẹp hơn (icon ở giữa-trên, PT ở dưới)
+  // pt-header-logo: chỉ icon, gọn hơn
+  const aspect = isFull ? 1.4 : 1.4;
+
+  return (
+    <img
+      src={SRC[variant]}
+      alt="Phúc Thịnh"
+      draggable={false}
+      width={size ?? Math.round(height * aspect)}
+      height={height}
+      className={className}
+      style={{
+        display: "block",
+        ...style,
+      }}
+    />
+  );
+}
+
+/** HexMark — alias cho PtLogo variant="icon", dùng trong hero/loader */
+export function HexMark({
+  size = 36,
+  className,
+  style,
+}: {
+  size?: number;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <PtLogo
+      variant="icon"
+      size={size}
+      height={size}
+      className={className}
+      style={style}
+    />
+  );
+}
+
+/** Wordmark — icon + tên "Phúc Thịnh" + "Flour" (typography riêng) */
+export function PtWordmark({
+  className,
+  size = 32,
+}: {
+  className?: string;
+  size?: number;
+}) {
+  return (
+    <div
+      className={className}
+      style={{ display: "inline-flex", alignItems: "center", gap: 12 }}
+      aria-label="Phúc Thịnh Flour"
+    >
+      <HexMark size={size} />
+      <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}>
+        <span
+          style={{
+            color: "var(--pt-sage-700)",
+            fontWeight: 800,
+            fontSize: size * 0.55,
+            letterSpacing: "0.04em",
+            fontFamily: "var(--font-be-vietnam), system-ui, sans-serif",
+          }}
+        >
+          Phúc Thịnh
+        </span>
+        <span
+          style={{
+            color: "var(--pt-ink-soft)",
+            fontSize: size * 0.32,
+            letterSpacing: "0.28em",
+            textTransform: "uppercase",
+            marginTop: 2,
+            fontWeight: 500,
+          }}
+        >
+          Flour
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/** Logo to cho hero/loader — variant full (2 dòng) */
+export function PtHeroLogo({
+  className,
+  style,
+  maxWidth = 520,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+  maxWidth?: number;
+}) {
+  return (
+    <img
+      src={SRC.full}
+      alt="Phúc Thịnh Flour"
+      draggable={false}
+      className={className}
+      style={{
+        display: "block",
+        width: "100%",
+        maxWidth,
+        height: "auto",
+        ...style,
+      }}
+    />
+  );
+}
+
+/**
+ * PtLoaderLogoInline — inline SVG dùng riêng cho CinematicLoader.
+ * Chỉ gồm paths 4-6 (PT lower set) để tránh double-logo khi dùng full 6-path SVG.
+ * Fill qua prop — cream trên nền tối.
+ */
+export function PtLoaderLogoInline({
+  fill = "var(--pt-cream)",
+  maxWidth = 420,
+  className,
+  style,
+}: {
+  fill?: string;
+  maxWidth?: number;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <svg
+      viewBox="1460 1300 500 720"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid meet"
+      aria-hidden="true"
+      style={{ display: "block", width: "100%", maxWidth, height: "auto", ...style }}
+      className={className}
+    >
+      <g transform="translate(0,2480) scale(0.1,-0.1)" fill={fill} stroke="none">
+        {/* PT — decorative gem */}
+        <path d="M16223 11311 c-57 -19 -116 -57 -156 -99 -14 -15 -132 -211 -262 -437 -130 -225 -272 -471 -315 -545 -360 -623 -326 -558 -340 -644 -14 -77 3 -174 41 -242 12 -22 64 -113 117 -204 52 -91 169 -293 260 -450 524 -908 498 -867 599 -922 89 -48 110 -49 1038 -46 l870 3 57 23 c81 33 149 99 212 206 218 367 804 1391 823 1436 25 62 31 176 12 245 -12 42 -127 244 -733 1290 -90 155 -167 277 -191 301 -23 22 -68 54 -101 70 l-59 29 -910 2 c-855 2 -913 1 -962 -16z m797 -338 c14 -9 72 -58 130 -108 58 -49 113 -96 122 -103 9 -7 61 -22 115 -33 121 -25 260 -71 319 -105 24 -14 71 -57 104 -94 69 -77 66 -76 383 -150 159 -38 207 -56 207 -79 0 -4 -6 -16 -14 -27 -14 -18 -26 -19 -264 -15 l-250 3 -123 -43 -124 -44 -400 0 c-328 -1 -417 -4 -495 -18 -270 -47 -466 -156 -605 -337 -48 -62 -107 -172 -127 -237 -7 -24 -16 -43 -20 -43 -15 0 -32 155 -31 285 1 116 5 157 27 240 95 367 377 607 800 680 49 8 113 15 142 15 30 0 54 4 54 9 0 5 -10 30 -21 56 -50 112 -7 201 71 148z m225 -1187 c161 -33 201 -51 273 -120 l58 -55 137 -30 c143 -30 167 -41 167 -72 0 -29 -31 -36 -190 -42 -138 -5 -149 -7 -231 -41 -110 -45 -156 -55 -262 -57 l-86 -1 -31 -55 c-17 -30 -51 -75 -76 -98 -51 -50 -160 -125 -180 -125 -25 0 -27 29 -4 72 44 85 88 198 77 198 -7 0 -40 -7 -75 -15 -124 -29 -209 -93 -254 -190 -19 -41 -23 -67 -23 -145 0 -89 2 -99 34 -158 48 -88 131 -160 255 -222 56 -27 125 -55 154 -62 90 -20 37 -33 -133 -32 -136 0 -158 3 -235 28 -209 68 -360 189 -436 351 -104 219 -83 433 61 623 91 120 233 211 390 251 117 29 125 30 310 26 135 -2 196 -8 300 -29z m588 -552 c-9 -149 -5 -212 21 -304 30 -108 33 -174 10 -228 -14 -35 -14 -38 3 -47 42 -23 89 -85 112 -146 36 -97 66 -145 151 -233 84 -89 96 -109 74 -127 -21 -17 -136 -4 -223 25 -103 35 -154 68 -246 162 -46 46 -91 84 -101 84 -11 0 -68 -16 -129 -36 -269 -85 -497 -84 -720 5 -44 18 -82 34 -85 37 -2 3 38 2 90 -1 238 -17 509 57 644 176 63 55 118 174 150 321 28 129 40 159 98 235 42 56 125 126 142 120 6 -2 10 -21 9 -43z" />
+        {/* PT — P letterform */}
+        <path d="M15353 6976 l-28 -24 -3 -956 -2 -956 230 0 230 0 2 308 3 307 495 5 495 5 65 32 c84 41 145 102 184 183 l31 65 0 385 0 385 -31 65 c-39 83 -101 145 -184 184 l-65 31 -697 3 -696 3 -29 -25z m1148 -366 c19 -5 48 -24 65 -41 l29 -30 3 -191 c4 -209 -1 -232 -50 -273 l-30 -25 -369 0 -369 0 0 278 c0 153 3 282 7 285 10 11 674 8 714 -3z" />
+        {/* PT — T letterform */}
+        <path d="M17280 6810 l0 -190 320 0 320 0 0 -790 0 -790 230 0 230 0 2 788 3 787 318 3 317 2 0 190 0 190 -870 0 -870 0 0 -190z" />
+      </g>
+    </svg>
+  );
+}
+
+/**
+ * PtHeroLogoInline — inline SVG version của full logo (6 paths từ 福泰-彩色稿).
+ * Cho phép tô màu qua `fill` prop (currentColor by default),
+ * và per-path animation via className / ref khi cần.
+ *
+ * Paths 1-3: 福泰 (upper decorative + letterforms)
+ * Paths 4-6: PT  (lower decorative + letterforms)
+ */
+export function PtHeroLogoInline({
+  className,
+  style,
+  maxWidth = 520,
+  fill = "currentColor",
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+  maxWidth?: number;
+  fill?: string;
+}) {
+  return (
+    <svg
+      viewBox="0 0 3508 2480"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid meet"
+      aria-hidden="true"
+      style={{
+        display: "block",
+        width: "100%",
+        maxWidth,
+        height: "auto",
+        ...style,
+      }}
+      className={className}
+    >
+      <g
+        transform="translate(0,2480) scale(0.1,-0.1)"
+        fill={fill}
+        stroke="none"
+      >
+        {/* 福 — upper decorative gem */}
+        <path d="M13293 18646 c-113 -36 -169 -90 -265 -256 -36 -63 -140 -243 -230 -400 -605 -1047 -575 -991 -588 -1069 -14 -84 -3 -156 36 -233 15 -29 118 -210 229 -403 657 -1137 623 -1082 681 -1134 30 -28 79 -60 112 -73 l57 -23 869 -3 c569 -2 888 1 925 8 74 14 150 53 200 104 23 24 107 158 202 321 89 154 281 487 427 740 146 253 274 481 284 508 23 60 24 179 2 244 -9 26 -80 158 -158 293 -78 135 -270 468 -427 740 -307 533 -328 563 -436 617 l-58 28 -910 2 c-733 1 -918 -1 -952 -11z m787 -343 c14 -9 72 -58 130 -108 58 -49 113 -96 122 -104 10 -7 60 -21 111 -31 113 -22 266 -72 324 -106 23 -13 66 -52 95 -85 29 -33 65 -67 81 -75 15 -8 121 -37 235 -65 279 -67 272 -64 272 -99 0 -16 -6 -32 -12 -37 -7 -4 -128 -6 -268 -5 l-255 4 -92 -36 c-51 -20 -125 -41 -165 -46 -40 -5 -233 -9 -428 -7 -306 2 -368 0 -447 -16 -244 -47 -411 -132 -550 -280 -72 -77 -118 -153 -164 -266 l-34 -84 -13 64 c-17 85 -19 338 -3 414 73 350 281 579 629 694 90 30 237 58 330 63 42 2 52 6 48 18 -3 8 -14 40 -25 70 -39 104 6 173 79 123z m230 -1188 c156 -33 200 -52 270 -119 63 -60 56 -57 205 -86 120 -24 155 -40 155 -71 0 -29 -31 -36 -160 -38 -149 -2 -166 -5 -282 -52 -80 -33 -115 -41 -186 -45 -141 -8 -150 -11 -166 -47 -7 -18 -27 -49 -44 -70 -34 -42 -141 -131 -185 -154 -51 -26 -74 2 -42 51 22 33 95 206 87 206 -4 0 -37 -7 -73 -14 -123 -26 -209 -88 -260 -186 -20 -38 -24 -60 -24 -140 0 -88 3 -101 33 -162 36 -74 102 -140 196 -196 64 -39 180 -88 232 -98 109 -20 -151 -44 -273 -25 -234 36 -452 182 -543 363 -193 386 31 798 490 899 127 28 398 21 570 -16z m583 -551 c-9 -151 -5 -202 20 -301 31 -116 34 -178 11 -231 -14 -34 -14 -38 2 -47 44 -26 72 -58 93 -107 69 -156 84 -181 168 -268 64 -67 84 -95 81 -112 -2 -19 -10 -23 -46 -26 -57 -4 -191 30 -270 69 -45 22 -89 57 -152 120 -50 51 -97 89 -108 89 -10 0 -45 -9 -78 -21 -298 -103 -563 -102 -804 4 l-53 24 149 0 c173 0 292 21 417 73 193 80 266 178 322 432 26 117 39 148 93 222 39 53 128 129 146 123 6 -2 10 -21 9 -43z" />
+        {/* 福 — upper P letterform */}
+        <path d="M17134 18176 c-17 -8 -40 -26 -52 -41 l-22 -28 0 -1288 0 -1289 310 0 310 0 2 418 3 417 665 5 c652 5 666 5 717 27 168 68 286 197 328 358 12 49 15 139 15 526 0 524 -1 530 -75 654 -65 108 -151 177 -279 224 l-71 26 -910 2 c-751 2 -915 0 -941 -11z m1579 -549 c71 -54 72 -61 72 -353 l0 -260 -27 -41 c-16 -24 -44 -49 -70 -62 -43 -21 -56 -21 -526 -21 l-482 0 0 385 0 386 498 -3 499 -3 36 -28z" />
+        {/* 泰 — upper T letterform */}
+        <path d="M19710 17925 l0 -265 430 0 430 0 0 -1065 0 -1065 315 0 315 0 0 1065 0 1065 430 0 430 0 0 265 0 265 -1175 0 -1175 0 0 -265z" />
+        {/* PT — lower decorative gem */}
+        <path d="M16223 11311 c-57 -19 -116 -57 -156 -99 -14 -15 -132 -211 -262 -437 -130 -225 -272 -471 -315 -545 -360 -623 -326 -558 -340 -644 -14 -77 3 -174 41 -242 12 -22 64 -113 117 -204 52 -91 169 -293 260 -450 524 -908 498 -867 599 -922 89 -48 110 -49 1038 -46 l870 3 57 23 c81 33 149 99 212 206 218 367 804 1391 823 1436 25 62 31 176 12 245 -12 42 -127 244 -733 1290 -90 155 -167 277 -191 301 -23 22 -68 54 -101 70 l-59 29 -910 2 c-855 2 -913 1 -962 -16z m797 -338 c14 -9 72 -58 130 -108 58 -49 113 -96 122 -103 9 -7 61 -22 115 -33 121 -25 260 -71 319 -105 24 -14 71 -57 104 -94 69 -77 66 -76 383 -150 159 -38 207 -56 207 -79 0 -4 -6 -16 -14 -27 -14 -18 -26 -19 -264 -15 l-250 3 -123 -43 -124 -44 -400 0 c-328 -1 -417 -4 -495 -18 -270 -47 -466 -156 -605 -337 -48 -62 -107 -172 -127 -237 -7 -24 -16 -43 -20 -43 -15 0 -32 155 -31 285 1 116 5 157 27 240 95 367 377 607 800 680 49 8 113 15 142 15 30 0 54 4 54 9 0 5 -10 30 -21 56 -50 112 -7 201 71 148z m225 -1187 c161 -33 201 -51 273 -120 l58 -55 137 -30 c143 -30 167 -41 167 -72 0 -29 -31 -36 -190 -42 -138 -5 -149 -7 -231 -41 -110 -45 -156 -55 -262 -57 l-86 -1 -31 -55 c-17 -30 -51 -75 -76 -98 -51 -50 -160 -125 -180 -125 -25 0 -27 29 -4 72 44 85 88 198 77 198 -7 0 -40 -7 -75 -15 -124 -29 -209 -93 -254 -190 -19 -41 -23 -67 -23 -145 0 -89 2 -99 34 -158 48 -88 131 -160 255 -222 56 -27 125 -55 154 -62 90 -20 37 -33 -133 -32 -136 0 -158 3 -235 28 -209 68 -360 189 -436 351 -104 219 -83 433 61 623 91 120 233 211 390 251 117 29 125 30 310 26 135 -2 196 -8 300 -29z m588 -552 c-9 -149 -5 -212 21 -304 30 -108 33 -174 10 -228 -14 -35 -14 -38 3 -47 42 -23 89 -85 112 -146 36 -97 66 -145 151 -233 84 -89 96 -109 74 -127 -21 -17 -136 -4 -223 25 -103 35 -154 68 -246 162 -46 46 -91 84 -101 84 -11 0 -68 -16 -129 -36 -269 -85 -497 -84 -720 5 -44 18 -82 34 -85 37 -2 3 38 2 90 -1 238 -17 509 57 644 176 63 55 118 174 150 321 28 129 40 159 98 235 42 56 125 126 142 120 6 -2 10 -21 9 -43z" />
+        {/* PT — lower P letterform */}
+        <path d="M15353 6976 l-28 -24 -3 -956 -2 -956 230 0 230 0 2 308 3 307 495 5 495 5 65 32 c84 41 145 102 184 183 l31 65 0 385 0 385 -31 65 c-39 83 -101 145 -184 184 l-65 31 -697 3 -696 3 -29 -25z m1148 -366 c19 -5 48 -24 65 -41 l29 -30 3 -191 c4 -209 -1 -232 -50 -273 l-30 -25 -369 0 -369 0 0 278 c0 153 3 282 7 285 10 11 674 8 714 -3z" />
+        {/* PT — lower T letterform */}
+        <path d="M17280 6810 l0 -190 320 0 320 0 0 -790 0 -790 230 0 230 0 2 788 3 787 318 3 317 2 0 190 0 190 -870 0 -870 0 0 -190z" />
+      </g>
+    </svg>
+  );
+}

@@ -1,0 +1,191 @@
+/**
+ * GeometricStalk - CSS-only wheat stalk styles
+ * Pure CSS geometric design - no SVG paths
+ * Bauhaus-inspired clean rectangles and circles
+ */
+
+.geometric-stalk {
+  --navy: #0b160c;
+  --wheat-gold: #e8d4a8;
+  --sage: #5d8a4d;
+  --cream: #faf7f0;
+  --stalk-height: 120px;
+
+  position: relative;
+  width: 30px;
+  height: var(--stalk-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stalk-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: stalk-bend 3s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* Main stem - geometric rectangle */
+.stalk-stem {
+  width: 4px;
+  height: 80%;
+  background: linear-gradient(
+    to right,
+    var(--sage) 0%,
+    var(--wheat-gold) 50%,
+    var(--sage) 100%
+  );
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 
+    inset 1px 0 2px rgba(0, 0, 0, 0.1),
+    -1px 0 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Individual grain kernel - geometric rectangle */
+.stalk-grain {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: var(--grain-position);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grain-kernel {
+  width: 8px;
+  height: 12px;
+  background: var(--wheat-gold);
+  border-radius: 3px 3px 1px 1px;
+  box-shadow: 
+    inset -1px 0 3px rgba(0, 0, 0, 0.15),
+    1px 1px 2px rgba(0, 0, 0, 0.1);
+  animation: kernel-twitch 4s ease-in-out infinite;
+  animation-delay: calc(var(--grain-index) * 0.2s);
+}
+
+/* Grain segments */
+.grain-kernel::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 1px;
+  background: var(--navy);
+  opacity: 0.2;
+}
+
+.grain-kernel::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 1px;
+  background: var(--navy);
+  opacity: 0.2;
+}
+
+/* Geometric awn tip */
+.grain-tip {
+  width: 2px;
+  height: 10px;
+  background: var(--wheat-gold);
+  border-radius: 1px;
+  transform: rotate(25deg);
+  transform-origin: bottom center;
+}
+
+.stalk-grain:nth-child(odd) .grain-tip {
+  transform: rotate(-25deg);
+}
+
+/* Top awn */
+.stalk-awn {
+  width: 2px;
+  height: 20px;
+  background: var(--wheat-gold);
+  border-radius: 1px;
+  margin-top: -2px;
+  animation: awn-wave 2.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* Ground shadow */
+.stalk-shadow {
+  width: 20px;
+  height: 6px;
+  background: var(--navy);
+  opacity: 0.15;
+  border-radius: 50%;
+  margin-top: -3px;
+  filter: blur(2px);
+}
+
+/* Animations */
+@keyframes stalk-bend {
+  0%, 100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes kernel-twitch {
+  0%, 90%, 100% {
+    transform: translateX(0);
+  }
+  93% {
+    transform: translateX(1px);
+  }
+  96% {
+    transform: translateX(-1px);
+  }
+}
+
+@keyframes awn-wave {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+/* Gentle sway variant */
+.geometric-stalk.sway .stalk-container {
+  animation: gentle-sway 4s ease-in-out infinite;
+}
+
+@keyframes gentle-sway {
+  0%, 100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .stalk-container {
+    animation: none;
+  }
+  .grain-kernel {
+    animation: none;
+  }
+  .stalk-awn {
+    animation: none;
+  }
+  .geometric-stalk.sway .stalk-container {
+    animation: none;
+  }
+}

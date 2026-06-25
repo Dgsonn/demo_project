@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# temporary/generated files
+*.png
+*.log
+out.html
+args.json
+verify-visual.js
+.mavis/
+scripts/
+EVALUATION_REPORT.md
+SPEC.md

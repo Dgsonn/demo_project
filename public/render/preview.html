@@ -1,0 +1,16 @@
+<!doctype html><html><body style="margin:0">
+<script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+<div id="anim" style="width:1920px;height:1080px;background:#f8f4ec"></div>
+<script>
+fetch('/hero.json').then(r=>r.json()).then(data=>{
+  window.__anim = lottie.loadAnimation({
+    container: document.getElementById('anim'),
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    animationData: data,
+  });
+  window.__anim.addEventListener('DOMLoaded',()=>{ window.__ready = true; });
+});
+</script>
+</body></html>
