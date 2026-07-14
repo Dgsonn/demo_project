@@ -86,9 +86,12 @@ export function HexMark({
 export function PtWordmark({
   className,
   size = 32,
+  dark = false,
 }: {
   className?: string;
   size?: number;
+  /** true khi đặt trên nền tối (vd. footer) — đổi màu chữ cho đủ tương phản */
+  dark?: boolean;
 }) {
   return (
     <div
@@ -100,7 +103,7 @@ export function PtWordmark({
       <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}>
         <span
           style={{
-            color: "var(--pt-sage-700)",
+            color: dark ? "var(--pt-cream)" : "var(--pt-sage-700)",
             fontWeight: 800,
             fontSize: size * 0.55,
             letterSpacing: "0.04em",
@@ -111,7 +114,7 @@ export function PtWordmark({
         </span>
         <span
           style={{
-            color: "var(--pt-ink-soft)",
+            color: dark ? "var(--pt-wheat-soft)" : "var(--pt-ink-soft)",
             fontSize: size * 0.32,
             letterSpacing: "0.28em",
             textTransform: "uppercase",

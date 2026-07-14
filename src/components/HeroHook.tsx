@@ -1,6 +1,6 @@
 /**
  * HeroHook — Phúc Thịnh Flour B2B hero.
- * 
+ *
  * Features:
  * - Logo entrance animation (hero-logo-entrance)
  * - Fixed alignment with proper spacing
@@ -8,10 +8,14 @@
  * - Mobile responsive
  */
 
+"use client";
+
 import Link from "next/link";
-import { PtHeroLogo } from "./PtLogo";
+import { HexMark } from "./PtLogo";
+import { useT } from "@/lib/i18n/useT";
 
 export function HeroHook() {
+  const t = useT();
   return (
     <section
       className="relative w-full overflow-hidden"
@@ -36,207 +40,101 @@ export function HeroHook() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle at 70% 50%, transparent 50%, rgba(69, 106, 57, 0.06) 100%)",
+            "radial-gradient(circle at 70% 50%, transparent 50%, rgba(15, 47, 102, 0.06) 100%)",
         }}
         aria-hidden="true"
       />
 
-      {/* Decorative cassava plants — large background illustrations */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        {/* Left cassava plant — bottom-left, very large */}
-        <svg
-          viewBox="0 0 200 200"
-          className="absolute"
-          style={{
-            width: "clamp(500px, 45vw, 800px)",
-            height: "auto",
-            left: "-8%",
-            bottom: "-18%",
-            opacity: 0.15,
-            transform: "rotate(15deg)",
-          }}
-        >
-          <defs>
-            <path id="hero-leaf" d="M0,0 C-10,-10 -12,-35 0,-42 C12,-35 10,-10 0,0 Z" fill="#388e3c" stroke="#2e7d32" strokeWidth="0.5" />
-          </defs>
-          <ellipse cx="100" cy="185" rx="30" ry="5" fill="#eeeeee" />
-          <path d="M100,120 C115,125 125,145 110,180 C105,190 95,190 90,180 C75,145 85,125 100,120 Z" fill="#8d6e63" stroke="#5d4037" strokeWidth="1.5" />
-          <path d="M92,140 Q100,143 108,140" fill="none" stroke="#ffffff" strokeOpacity="0.4" strokeWidth="1" />
-          <path d="M90,160 Q100,163 110,160" fill="none" stroke="#ffffff" strokeOpacity="0.4" strokeWidth="1" />
-          <path d="M100,120 L100,85" stroke="#4caf50" strokeWidth="4" strokeLinecap="round" />
-          <g transform="translate(100, 85)">
-            <use href="#hero-leaf" transform="rotate(0)" />
-            <use href="#hero-leaf" transform="rotate(45)" />
-            <use href="#hero-leaf" transform="rotate(90)" />
-            <use href="#hero-leaf" transform="rotate(-45)" />
-            <use href="#hero-leaf" transform="rotate(-90)" />
-            <circle cx="0" cy="0" r="3" fill="#2e7d32" />
-          </g>
-        </svg>
-
-        {/* Right cassava plant — bottom-right, even larger */}
-        <svg
-          viewBox="0 0 200 200"
-          className="absolute"
-          style={{
-            width: "clamp(600px, 55vw, 1000px)",
-            height: "auto",
-            right: "-12%",
-            bottom: "-25%",
-            opacity: 0.12,
-            transform: "rotate(-10deg) scaleX(-1)",
-          }}
-        >
-          <defs>
-            <path id="hero-leaf-r" d="M0,0 C-10,-10 -12,-35 0,-42 C12,-35 10,-10 0,0 Z" fill="#388e3c" stroke="#2e7d32" strokeWidth="0.5" />
-          </defs>
-          <ellipse cx="100" cy="185" rx="30" ry="5" fill="#eeeeee" />
-          <path d="M100,120 C115,125 125,145 110,180 C105,190 95,190 90,180 C75,145 85,125 100,120 Z" fill="#8d6e63" stroke="#5d4037" strokeWidth="1.5" />
-          <path d="M92,140 Q100,143 108,140" fill="none" stroke="#ffffff" strokeOpacity="0.4" strokeWidth="1" />
-          <path d="M90,160 Q100,163 110,160" fill="none" stroke="#ffffff" strokeOpacity="0.4" strokeWidth="1" />
-          <path d="M100,120 L100,85" stroke="#4caf50" strokeWidth="4" strokeLinecap="round" />
-          <g transform="translate(100, 85)">
-            <use href="#hero-leaf-r" transform="rotate(0)" />
-            <use href="#hero-leaf-r" transform="rotate(45)" />
-            <use href="#hero-leaf-r" transform="rotate(90)" />
-            <use href="#hero-leaf-r" transform="rotate(-45)" />
-            <use href="#hero-leaf-r" transform="rotate(-90)" />
-            <circle cx="0" cy="0" r="3" fill="#2e7d32" />
-          </g>
-        </svg>
-
-        {/* Top-center small cassava — subtle accent */}
-        <svg
-          viewBox="0 0 200 200"
-          className="absolute hidden lg:block"
-          style={{
-            width: "clamp(250px, 20vw, 400px)",
-            height: "auto",
-            right: "5%",
-            top: "-5%",
-            opacity: 0.09,
-            transform: "rotate(25deg)",
-          }}
-        >
-          <defs>
-            <path id="hero-leaf-t" d="M0,0 C-10,-10 -12,-35 0,-42 C12,-35 10,-10 0,0 Z" fill="#388e3c" stroke="#2e7d32" strokeWidth="0.5" />
-          </defs>
-          <ellipse cx="100" cy="185" rx="30" ry="5" fill="#eeeeee" />
-          <path d="M100,120 C115,125 125,145 110,180 C105,190 95,190 90,180 C75,145 85,125 100,120 Z" fill="#8d6e63" stroke="#5d4037" strokeWidth="1.5" />
-          <path d="M100,120 L100,85" stroke="#4caf50" strokeWidth="4" strokeLinecap="round" />
-          <g transform="translate(100, 85)">
-            <use href="#hero-leaf-t" transform="rotate(0)" />
-            <use href="#hero-leaf-t" transform="rotate(45)" />
-            <use href="#hero-leaf-t" transform="rotate(90)" />
-            <use href="#hero-leaf-t" transform="rotate(-45)" />
-            <use href="#hero-leaf-t" transform="rotate(-90)" />
-            <circle cx="0" cy="0" r="3" fill="#2e7d32" />
-          </g>
-        </svg>
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 pt-6 pb-10 lg:pt-8 lg:pb-24 hero-reveal">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-start">
-          {/* ========== LEFT: text + CTA ========== */}
-          <div className="text-left">
-            {/* H1 */}
-            <h1
-              className="pt-rise text-display mt-3 lg:mt-5"
-              style={{
-                maxWidth: "18ch",
-                color: "#1a1a1a",
-              }}
-            >
-              Bột mì &amp; bột biến tính xuất khẩu
-              <br />
-              <span style={{ color: "var(--pt-sage-500)" }}>
-                Cho nhà máy &amp; xưởng bánh Việt
-              </span>
-            </h1>
-
-            {/* Subheadline */}
-            <p className="pt-rise lede mt-5" style={{ maxWidth: "52ch" }}>
-              Đạt ISO 22000 · HACCP · FDA. Protein 11%, tinh khiết 99.9%. Phản hồi báo giá
-              trong 24h.
-            </p>
-
-            {/* CTA row */}
-            <div className="pt-rise mt-5 lg:mt-8 flex flex-wrap items-center gap-3">
-              <Link href="/#lien-he" className="btn-primary">
-                Yêu cầu báo giá 24h
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  style={{ marginLeft: 8 }}
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M3 8h10M9 4l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </Link>
-              <Link
-                href="/#lien-he"
-                className="btn-secondary"
-                aria-label="Liên hệ để nhận TDS"
-              >
-                Tải TDS (PDF)
-              </Link>
-            </div>
-
-            {/* Stats row */}
-            <div
-              className="pt-rise mt-10 pt-6 grid grid-cols-3 gap-6"
-              style={{ borderTop: "1px solid var(--pt-line)" }}
-            >
-              {[
-                { v: "20+", l: "Năm kinh nghiệm" },
-                { v: "40+", l: "Quốc gia xuất khẩu" },
-                { v: "11%", l: "Protein" },
-              ].map((s) => (
-                <div key={s.l}>
-                  <div
-                    className="text-stat"
-                    style={{
-                      color: "var(--pt-sage-700)",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {s.v}
-                  </div>
-                  <div
-                    className="text-stat-label"
-                    style={{ color: "var(--pt-ink-soft)", marginTop: 4 }}
-                  >
-                    {s.l}
-                  </div>
-                </div>
-              ))}
-            </div>
+      <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-10 pt-10 pb-10 lg:pt-14 lg:pb-24 hero-reveal">
+        <div className="flex flex-col items-center text-center">
+          {/* ========== Logo icon with entrance animation ========== */}
+          <div className="logo-zoom-in">
+            <HexMark size={220} />
+            <div className="logo-shine" aria-hidden="true" />
           </div>
 
-          {/* ========== RIGHT: logo with entrance animation ========== */}
-          <div className="relative flex items-center justify-center">
-            {/* Logo container with entrance animation + float + offset */}
-            <div
-              className="logo-fade-in logo-float"
-              style={{ marginLeft: "10%" }}
-            >
-              <PtHeroLogo 
-                maxWidth={400} 
-                style={{
-                  filter: "drop-shadow(8px 12px 24px rgba(93, 106, 57, 0.35))",
-                }}
-              />
-            </div>
+          {/* H1 */}
+          <h1
+            className="pt-rise mt-6"
+            style={{
+              maxWidth: "18ch",
+              color: "#1a1a1a",
+              fontSize: "clamp(1.75rem, 3.2vw, 2.5rem)",
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+              fontWeight: 700,
+            }}
+          >
+            {t.hero.headlineA}
+            <br />
+            <span style={{ color: "var(--pt-sage-500)" }}>
+              {t.hero.headlineB}
+            </span>
+          </h1>
 
-            
+          {/* Subheadline */}
+          <p className="pt-rise lede mt-5" style={{ maxWidth: "52ch" }}>
+            {t.hero.subheadline}
+          </p>
+
+          {/* CTA row */}
+          <div className="pt-rise mt-5 lg:mt-8 flex flex-wrap items-center justify-center gap-3">
+            <Link href="/#yeu-cau-mau" className="btn-primary">
+              {t.hero.ctaPrimary}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                style={{ marginLeft: 8 }}
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 8h10M9 4l4 4-4 4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </Link>
+            <Link
+              href="/#yeu-cau-mau"
+              className="btn-secondary"
+              aria-label={t.hero.ctaSecondary}
+            >
+              {t.hero.ctaSecondary}
+            </Link>
+          </div>
+
+          {/* Stats row */}
+          <div
+            className="pt-rise mt-10 pt-6 grid grid-cols-3 gap-10"
+            style={{ borderTop: "1px solid var(--pt-line)" }}
+          >
+            {[
+              { v: "20+", l: t.hero.statYears },
+              { v: "40+", l: t.hero.statCountries },
+              { v: "90%", l: t.hero.statWhiteness },
+            ].map((s) => (
+              <div key={s.l}>
+                <div
+                  className="text-stat"
+                  style={{
+                    color: "var(--pt-sage-700)",
+                    lineHeight: 1,
+                  }}
+                >
+                  {s.v}
+                </div>
+                <div
+                  className="text-stat-label"
+                  style={{ color: "var(--pt-ink-soft)", marginTop: 4 }}
+                >
+                  {s.l}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

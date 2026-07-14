@@ -1,53 +1,40 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useT } from "@/lib/i18n/useT";
 
 /**
- * CinematicLoader v8 — "Cây sắn Việt" (From a Vietnamese Cassava)
+ * CinematicLoader v10 — "Logo keyhole" reveal
+ * (idea borrowed from telec.com.vn's letter-mask splash)
  *
  * Narrative (once per session, first visit only):
- *   1. A seed sprouts and grows into a cassava plant.
- *   2. A single grain detaches and falls like a droplet onto a calm lake.
- *   3. Concentric ripples spread; the company logo surfaces from the centre.
- *   4. The logo flies to the top-left and LANDS exactly on the real header
- *      logo — a seamless hand-off from loading screen into the landing page.
+ *   1. A small hexagon-shaped window — masked to the real logo silhouette —
+ *      opens at the centre of the screen, filled with a brand-color gradient.
+ *   2. The window grows until it fills the viewport; wordmark and tagline
+ *      fade in over it.
+ *   3. The whole loader cross-dissolves away, revealing the real header/hero
+ *      already in place underneath — no flying element, no target math.
  */
 
 const HEADER_LOGO_SRC = "/pt-header-logo.svg";
 
-// Mark size while it floats centre-stage (header forces aspect ≈ 1.4)
-const MARK_H = 92;
-const MARK_W = Math.round(MARK_H * 1.4);
+// Logo mark size — square box, same as <HexMark size={220} /> on the
+// homepage hero (also used for the reduced-motion static splash).
+const MARK_H = 220;
+const MARK_W = 220;
 
 // Timeline (ms) — tunable. Earlier beats are driven by CSS animation delays.
-const FLIGHT_START = 4200; // logo leaves centre for the header corner
-const FLIGHT_DUR = 900;
-const EXIT_AT = 5100; // loader begins to fade as the logo lands (cross-dissolve)
+const EXIT_AT = 2700; // loader begins to cross-dissolve into the real page
 const ROOT_FADE = 700;
 const REDUCED_HOLD = 900;
-
-// Wheat head kernels (viewBox 0 0 200 280) — staggered fill-in
-const KERNELS: { cx: number; cy: number; rot: number }[] = [
-  { cx: 92, cy: 116, rot: -20 },
-  { cx: 108, cy: 110, rot: 20 },
-  { cx: 92, cy: 100, rot: -20 },
-  { cx: 108, cy: 94, rot: 20 },
-  { cx: 93, cy: 84, rot: -18 },
-  { cx: 107, cy: 78, rot: 18 },
-  { cx: 100, cy: 68, rot: 0 },
-];
 
 export function CinematicLoader({ onDone }: { onDone?: () => void }) {
   const [visible, setVisible] = useState(true);
   const [exiting, setExiting] = useState(false);
   const [reduced, setReduced] = useState(false);
+  const t = useT();
 
-  const stemRef = useRef<SVGPathElement | null>(null);
-  const markRef = useRef<HTMLImageElement | null>(null);
-  const wordRef = useRef<HTMLDivElement | null>(null);
-  const tagRef = useRef<HTMLDivElement | null>(null);
   const timers = useRef<number[]>([]);
-  const flownRef = useRef(false);
   const finishedRef = useRef(false);
 
   const clearTimers = useCallback(() => {
@@ -59,6 +46,8 @@ export function CinematicLoader({ onDone }: { onDone?: () => void }) {
     if (finishedRef.current) return;
     finishedRef.current = true;
     clearTimers();
+    // hand-off: hero rises in NOW, cross-dissolving under the fading loader
+    document.documentElement.classList.add("hero-go");
     setExiting(true);
     window.setTimeout(() => {
       document.body.style.overflow = "";
@@ -67,49 +56,6 @@ export function CinematicLoader({ onDone }: { onDone?: () => void }) {
       onDone?.();
     }, ROOT_FADE);
   }, [clearTimers, onDone]);
-
-  const flyToHeader = useCallback(() => {
-    if (flownRef.current) return;
-    flownRef.current = true;
-
-    // hand-off: hero rises in NOW, in sync with the logo arriving
-    document.documentElement.classList.add("hero-go");
-    wordRef.current?.classList.add("is-leaving");
-    tagRef.current?.classList.add("is-leaving");
-
-    const mark = markRef.current;
-    const target = document.querySelector<HTMLElement>("[data-pt-header-logo]");
-    if (!mark || !target || typeof mark.animate !== "function") return;
-
-    const from = mark.getBoundingClientRect();
-    const to = target.getBoundingClientRect();
-    const dx = to.left + to.width / 2 - (from.left + from.width / 2);
-    const dy = to.top + to.height / 2 - (from.top + from.height / 2);
-    const s = to.height / from.height;
-
-    mark.animate(
-      [
-        { transform: "translate(-50%, -50%) scale(1)", opacity: 1, offset: 0 },
-        {
-          transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px) scale(${s})`,
-          opacity: 1,
-          offset: 0.82,
-        },
-        {
-          transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px) scale(${s})`,
-          opacity: 0,
-          offset: 1,
-        },
-      ],
-      { duration: FLIGHT_DUR, easing: "cubic-bezier(0.65, 0, 0.35, 1)", fill: "forwards" },
-    );
-  }, []);
-
-  const skip = useCallback(() => {
-    clearTimers();
-    flyToHeader();
-    timers.current.push(window.setTimeout(finish, FLIGHT_DUR + 60));
-  }, [clearTimers, finish, flyToHeader]);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -128,19 +74,6 @@ export function CinematicLoader({ onDone }: { onDone?: () => void }) {
       };
     }
 
-    // Beat 1 — draw the stem along its real length (organic line-draw)
-    const stem = stemRef.current;
-    if (stem) {
-      const len = stem.getTotalLength();
-      stem.style.strokeDasharray = `${len}`;
-      stem.style.strokeDashoffset = `${len}`;
-      // force reflow so the transition runs from the offset
-      void stem.getBoundingClientRect();
-      stem.style.transition = "stroke-dashoffset 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s";
-      stem.style.strokeDashoffset = "0";
-    }
-
-    timers.current.push(window.setTimeout(flyToHeader, FLIGHT_START));
     timers.current.push(window.setTimeout(finish, EXIT_AT));
 
     return () => {
@@ -148,7 +81,7 @@ export function CinematicLoader({ onDone }: { onDone?: () => void }) {
       document.body.style.overflow = "";
       document.documentElement.classList.remove("hero-go");
     };
-  }, [clearTimers, finish, flyToHeader]);
+  }, [clearTimers, finish]);
 
   if (!visible) return null;
 
@@ -178,54 +111,37 @@ export function CinematicLoader({ onDone }: { onDone?: () => void }) {
             height={MARK_H}
             width={MARK_W}
           />
-          <div className="ptl-static-word">Phúc Thịnh Flour</div>
+          <div className="ptl-static-word">{t.header.brandName} {t.header.brandTag}</div>
         </>
       ) : (
         <>
-          {/* Beat 1 — cassava plant */}
-          <svg
-            className="ptl-plant"
-            viewBox="0 0 200 200"
-            preserveAspectRatio="xMidYMax meet"
-            aria-hidden="true"
-          >
-            {/* Shadow */}
-            <ellipse className="ptl-shadow" cx="100" cy="185" rx="30" ry="5" />
+          {/* Ambient glow behind the keyhole, brightest while it's still small */}
+          <div className="ptl-reveal-glow" aria-hidden="true" />
 
-            {/* Single tuber */}
-            <path className="ptl-tuber" d="M100,120 C115,125 125,145 110,180 C105,190 95,190 90,180 C75,145 85,125 100,120 Z" />
-            <path className="ptl-tuber-line" d="M92,140 Q100,143 108,140" />
-            <path className="ptl-tuber-line" d="M90,160 Q100,163 110,160" />
+          {/* Beat 1 — logo-shaped keyhole opens and grows to fill the screen */}
+          <div className="ptl-reveal-wrap" aria-hidden="true">
+            <div className="ptl-reveal-fill" />
+            <div className="ptl-reveal-shine" />
+          </div>
 
-            {/* Stem */}
-            <line className="ptl-stem" x1="100" y1="120" x2="100" y2="85" />
+          {/* Drifting stars over the reveal */}
+          {Array.from({ length: 10 }).map((_, i) => {
+            const left = 12 + ((i * 37) % 76);
+            const top = 12 + ((i * 53) % 76);
+            return (
+              <span
+                key={i}
+                className="ptl-reveal-star"
+                aria-hidden="true"
+                style={{ left: `${left}%`, top: `${top}%`, animationDelay: `${1.2 + i * 0.17}s` }}
+              />
+            );
+          })}
 
-            {/* Leaf cluster */}
-            <g transform="translate(100, 85)">
-              <g transform="rotate(0)">
-                <path className="ptl-leaf" d="M0,0 C-10,-10 -12,-35 0,-42 C12,-35 10,-10 0,0 Z" />
-              </g>
-              <g transform="rotate(45)">
-                <path className="ptl-leaf" d="M0,0 C-10,-10 -12,-35 0,-42 C12,-35 10,-10 0,0 Z" />
-              </g>
-              <g transform="rotate(90)">
-                <path className="ptl-leaf" d="M0,0 C-10,-10 -12,-35 0,-42 C12,-35 10,-10 0,0 Z" />
-              </g>
-              <g transform="rotate(-45)">
-                <path className="ptl-leaf" d="M0,0 C-10,-10 -12,-35 0,-42 C12,-35 10,-10 0,0 Z" />
-              </g>
-              <g transform="rotate(-90)">
-                <path className="ptl-leaf" d="M0,0 C-10,-10 -12,-35 0,-42 C12,-35 10,-10 0,0 Z" />
-              </g>
-              <circle className="ptl-leaf-center" cx="0" cy="0" r="3" />
-            </g>
-          </svg>
-
-          {/* Beat 3 — logo surfaces */}
+          {/* Beat 2 — the real logo mark stamps in, centred over the reveal */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            ref={markRef}
-            className="ptl-mark"
+            className="ptl-reveal-logo"
             src={HEADER_LOGO_SRC}
             alt=""
             aria-hidden="true"
@@ -233,21 +149,18 @@ export function CinematicLoader({ onDone }: { onDone?: () => void }) {
             width={MARK_W}
             style={{ height: MARK_H, width: MARK_W }}
           />
-          <div className="ptl-word" ref={wordRef}>
-            Phúc Thịnh Flour
-          </div>
-          <div className="ptl-tag" ref={tagRef}>
-            Từ củ sắn Việt, đến tay bạn
-          </div>
 
-          <button type="button" className="ptl-skip" onClick={skip}>
-            Bỏ qua
-          </button>
+          <div className="ptl-word">
+            {t.header.brandName} {t.header.brandTag}
+          </div>
+          <div className="ptl-tag">
+            {t.loader.tagline}
+          </div>
         </>
       )}
 
       <span className="sr-only" aria-live="polite">
-        Đang tải nội dung…
+        {t.loader.loading}
       </span>
     </div>
   );

@@ -18,29 +18,8 @@ import { ProductTile } from "@/components/ProductTile";
 import { QualityGrid } from "@/components/QualityGrid";
 import { ContactCTA } from "@/components/ContactCTA";
 import { ProcessCTA } from "@/components/ProcessCTA";
-import { useReveal } from "@/hooks/useReveal";
-
-function RevealSection({ 
-  children, 
-  className = "", 
-  style = {} 
-}: { 
-  children: React.ReactNode; 
-  className?: string;
-  style?: React.CSSProperties;
-}) {
-  const { ref, visible } = useReveal<HTMLDivElement>();
-  
-  return (
-    <div
-      ref={ref}
-      className={`reveal ${visible ? 'is-visible' : ''} ${className}`}
-      style={style}
-    >
-      {children}
-    </div>
-  );
-}
+import { RevealSection } from "@/components/RevealSection";
+import { useT } from "@/lib/i18n/useT";
 
 function ChapterMarker({ number, label }: { number: string; label: string }) {
   return (
@@ -61,13 +40,13 @@ function ChapterMarker({ number, label }: { number: string; label: string }) {
 }
 
 export default function Home() {
+  const t = useT();
   return (
     <>
       <CinematicLoaderWrapper />
       
       {/* 01 — B2B Hero */}
       <HeroHook />
-      <TrustStrip />
 
       {/* 02 — Manifesto section — Chapter style */}
       <section 
@@ -303,18 +282,18 @@ export default function Home() {
         {/* Main content - centered */}
         <RevealSection className="relative z-10 mx-auto max-w-3xl px-6 text-center py-24">
           <SectionHeader
-            eyebrow="Câu chuyện"
+            eyebrow={t.manifesto.eyebrow}
             align="center"
             title={
               <>
-                Một dòng. Một hạt.
+                {t.manifesto.titleA}
                 <br />
                 <span style={{ color: "var(--pt-sage-500)" }}>
-                  Một tiêu chuẩn.
+                  {t.manifesto.titleB}
                 </span>
               </>
             }
-            description="Chúng tôi chọn lọc lúa mì từ vùng nguyên liệu Việt Nam, tinh chế qua dây chuyền hiện đại và kiểm định nghiêm ngặt — để mỗi gram bột đến tay bạn đều đồng nhất, an toàn và đáng tin cậy."
+            description={t.manifesto.description}
           />
         </RevealSection>
       </section>
@@ -327,44 +306,36 @@ export default function Home() {
       >
         <RevealSection className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeader
-            eyebrow="Sản phẩm"
-            title="Hai dòng chính. Một chất lượng."
-            description="Từ bột mì truyền thống đến bột biến tính công nghiệp — đáp ứng mọi nhu cầu sản xuất."
+            eyebrow={t.productsSection.eyebrow}
+            title={t.productsSection.title}
+            description={t.productsSection.description}
           />
-          
+
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Bột mì Phúc Thịnh */}
+            {/* Tinh bột sắn Phúc Thịnh */}
             <ProductTile
-              href="/san-pham/bot-mi"
-              eyebrow="Dòng chính"
-              title="Bột mì Phúc Thịnh"
-              specHighlight="11% Protein"
-              certBadges={["ISO 22000", "HACCP"]}
-              tagline="Cho bánh mì, bánh ngọt và mì sợi."
-              bullets={[
-                "Protein 11% — gluten cao, độ đàn hồi tốt",
-                "Hạt mịn đồng đều, không tạp chất",
-                "Đạt ISO 22000 · HACCP · FDA",
-              ]}
-              ctaPrimary="Yêu cầu mẫu"
-              ctaSecondary="Tải TDS"
-              visual={<WheatVisual />}
+              href="/san-pham/tinh-bot-san"
+              eyebrow={t.productsSection.tinhBotSan.eyebrow}
+              title={t.productsSection.tinhBotSan.title}
+              specHighlight={t.productsSection.tinhBotSan.specHighlight}
+              certBadges={["ISO 22000", "HACCP", "SGS"]}
+              tagline={t.productsSection.tinhBotSan.tagline}
+              bullets={t.productsSection.tinhBotSan.bullets}
+              ctaPrimary={t.productsSection.ctaPrimary}
+              ctaSecondary={t.productsSection.ctaSecondary}
+              visual={<StarchMoundVisual />}
             />
             {/* Bột biến tính Phúc Thịnh */}
             <ProductTile
               href="/san-pham/bot-bien-tinh"
-              eyebrow="Dòng công nghiệp"
-              title="Bột biến tính Phúc Thịnh"
-              specHighlight="99.9% Tinh khiết"
+              eyebrow={t.productsSection.botBienTinh.eyebrow}
+              title={t.productsSection.botBienTinh.title}
+              specHighlight={t.productsSection.botBienTinh.specHighlight}
               certBadges={["ISO 22000", "FDA"]}
-              tagline="Modified starch cho ngành thực phẩm & sản xuất."
-              bullets={[
-                "Ổn định cấu trúc, kéo dài thời hạn sản phẩm",
-                "Tùy biến theo ứng dụng: xốp, đặc, gel",
-                "An toàn thực phẩm — tiêu chuẩn quốc tế",
-              ]}
-              ctaPrimary="Yêu cầu mẫu"
-              ctaSecondary="Tải TDS"
+              tagline={t.productsSection.botBienTinh.tagline}
+              bullets={t.productsSection.botBienTinh.bullets}
+              ctaPrimary={t.productsSection.ctaPrimary}
+              ctaSecondary={t.productsSection.ctaSecondary}
               visual={<StarchVisual />}
               dark
             />
@@ -383,87 +354,27 @@ export default function Home() {
         className="section bg-white relative overflow-hidden"
         aria-label="Chất lượng và kiểm định"
       >
-        {/* Background cassava plants — large decorative illustrations */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <svg
-            viewBox="0 0 200 200"
-            className="absolute"
-            style={{
-              width: "clamp(400px, 35vw, 700px)",
-              height: "auto",
-              left: "-5%",
-              top: "10%",
-              opacity: 0.1,
-              transform: "rotate(-20deg)",
-            }}
-          >
-            <defs>
-              <path id="ql-leaf" d="M0,0 C-10,-10 -12,-35 0,-42 C12,-35 10,-10 0,0 Z" fill="#388e3c" stroke="#2e7d32" strokeWidth="0.5" />
-            </defs>
-            <ellipse cx="100" cy="185" rx="30" ry="5" fill="#eeeeee" />
-            <path d="M100,120 C115,125 125,145 110,180 C105,190 95,190 90,180 C75,145 85,125 100,120 Z" fill="#8d6e63" stroke="#5d4037" strokeWidth="1.5" />
-            <path d="M92,140 Q100,143 108,140" fill="none" stroke="#ffffff" strokeOpacity="0.4" strokeWidth="1" />
-            <path d="M90,160 Q100,163 110,160" fill="none" stroke="#ffffff" strokeOpacity="0.4" strokeWidth="1" />
-            <path d="M100,120 L100,85" stroke="#4caf50" strokeWidth="4" strokeLinecap="round" />
-            <g transform="translate(100, 85)">
-              <use href="#ql-leaf" transform="rotate(0)" />
-              <use href="#ql-leaf" transform="rotate(45)" />
-              <use href="#ql-leaf" transform="rotate(90)" />
-              <use href="#ql-leaf" transform="rotate(-45)" />
-              <use href="#ql-leaf" transform="rotate(-90)" />
-              <circle cx="0" cy="0" r="3" fill="#2e7d32" />
-            </g>
-          </svg>
-
-          <svg
-            viewBox="0 0 200 200"
-            className="absolute hidden md:block"
-            style={{
-              width: "clamp(350px, 30vw, 600px)",
-              height: "auto",
-              right: "-8%",
-              bottom: "5%",
-              opacity: 0.08,
-              transform: "rotate(15deg) scaleX(-1)",
-            }}
-          >
-            <defs>
-              <path id="ql-leaf-r" d="M0,0 C-10,-10 -12,-35 0,-42 C12,-35 10,-10 0,0 Z" fill="#388e3c" stroke="#2e7d32" strokeWidth="0.5" />
-            </defs>
-            <ellipse cx="100" cy="185" rx="30" ry="5" fill="#eeeeee" />
-            <path d="M100,120 C115,125 125,145 110,180 C105,190 95,190 90,180 C75,145 85,125 100,120 Z" fill="#8d6e63" stroke="#5d4037" strokeWidth="1.5" />
-            <path d="M100,120 L100,85" stroke="#4caf50" strokeWidth="4" strokeLinecap="round" />
-            <g transform="translate(100, 85)">
-              <use href="#ql-leaf-r" transform="rotate(0)" />
-              <use href="#ql-leaf-r" transform="rotate(45)" />
-              <use href="#ql-leaf-r" transform="rotate(90)" />
-              <use href="#ql-leaf-r" transform="rotate(-45)" />
-              <use href="#ql-leaf-r" transform="rotate(-90)" />
-              <circle cx="0" cy="0" r="3" fill="#2e7d32" />
-            </g>
-          </svg>
-        </div>
         <RevealSection className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeader
-            eyebrow="Chất lượng & Kiểm định"
+            eyebrow={t.qualitySection.eyebrow}
             title={
               <>
-                Bảy bước kiểm định.
+                {t.qualitySection.titleA}
                 <br />
-                Một cam kết.
+                {t.qualitySection.titleB}
               </>
             }
-            description="Mỗi mẻ bột đi qua bảy bước kiểm tra, từ cánh đồng đến nhà máy, trước khi đến tay bạn."
+            description={t.qualitySection.description}
           />
-          
+
           <div className="mt-12">
             <QualityGrid />
           </div>
-          
+
           {/* CTA bridge */}
           <div className="mt-14 flex justify-center">
-            <Link href="/#lien-he" className="btn-primary">
-              Yêu cầu báo giá 24h
+            <Link href="/#yeu-cau-mau" className="btn-primary">
+              {t.qualitySection.bridgeCta}
               <svg
                 width="16"
                 height="16"
@@ -485,6 +396,8 @@ export default function Home() {
         </RevealSection>
       </section>
 
+      <TrustStrip />
+
       {/* 06 — Contact CTA — Chapter style */}
       <RevealSection>
         <ContactCTA />
@@ -497,10 +410,10 @@ export default function Home() {
    Inline product visuals (SVG)
    ============================= */
 
-function WheatVisual() {
+function StarchMoundVisual() {
   return (
     <div
-      className="w-full h-full flex items-center justify-center"
+      className="w-full h-full flex items-center justify-center product-visual-float-sm"
       style={{
         background:
           "radial-gradient(ellipse at 70% 30%, var(--pt-cream) 0%, var(--pt-sage-100) 70%)",
@@ -508,41 +421,67 @@ function WheatVisual() {
     >
       <svg viewBox="0 0 240 240" width="70%" aria-hidden="true">
         <defs>
-          <radialGradient id="grain" cx="50%" cy="40%" r="60%">
+          <radialGradient id="tbsGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="var(--pt-sage-400)" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="var(--pt-sage-400)" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="tbsMound" cx="50%" cy="35%" r="70%">
             <stop offset="0%" stopColor="var(--pt-cream)" />
             <stop offset="100%" stopColor="var(--pt-wheat-soft)" />
           </radialGradient>
         </defs>
-        {/* Stylized wheat grain */}
-        <ellipse cx="120" cy="120" rx="65" ry="95" fill="url(#grain)" />
-        <line
-          x1="120" y1="40" x2="120" y2="200"
-          stroke="var(--pt-sage-700)" strokeWidth="1.2" opacity="0.25"
+        {/* Ambient glow */}
+        <circle cx="120" cy="120" r="112" fill="url(#tbsGlow)" />
+        {/* Base shadow */}
+        <ellipse cx="120" cy="185" rx="68" ry="9" fill="var(--pt-sage-700)" opacity="0.12" />
+        {/* Powder mound — tinh bột sắn */}
+        <path
+          d="M52,178 Q45,110 120,95 Q195,110 188,178 Q188,202 120,206 Q52,202 52,178 Z"
+          fill="url(#tbsMound)"
         />
-        {Array.from({ length: 9 }).map((_, i) => (
-          <line
-            key={i}
-            x1="120"
-            y1={55 + i * 18}
-            x2={70 - i * 4}
-            y2={62 + i * 18}
-            stroke="var(--pt-sage-700)"
-            strokeWidth="1.2"
-            opacity="0.18"
-          />
-        ))}
-        {Array.from({ length: 9 }).map((_, i) => (
-          <line
-            key={i + 9}
-            x1="120"
-            y1={55 + i * 18}
-            x2={170 + i * 4}
-            y2={62 + i * 18}
-            stroke="var(--pt-sage-700)"
-            strokeWidth="1.2"
-            opacity="0.18"
-          />
-        ))}
+        {/* Blue accent rim along the mound's edge */}
+        <path
+          d="M52,178 Q45,110 120,95 Q195,110 188,178"
+          fill="none"
+          stroke="var(--pt-sage-500)"
+          strokeWidth="2"
+          opacity="0.25"
+        />
+        {/* Fine granule texture on the mound */}
+        {Array.from({ length: 26 }).map((_, i) => {
+          const angle = (i / 26) * Math.PI * 2;
+          const r = 19 + (i % 5) * 12;
+          const cx = 120 + Math.cos(angle) * r * 0.95;
+          const cy = 140 + Math.sin(angle) * r * 0.5;
+          const isGold = i % 3 !== 0;
+          return (
+            <circle
+              key={i}
+              cx={cx}
+              cy={cy}
+              r={1 + (i % 3) * 0.7}
+              fill={isGold ? "var(--pt-sage-700)" : "var(--pt-sage-500)"}
+              opacity={0.1 + (i % 4) * 0.04}
+            />
+          );
+        })}
+        {/* Floating dust granules — blue + gold, gently twinkle above the mound */}
+        {Array.from({ length: 9 }).map((_, i) => {
+          const cx = 66 + (i * 104) % 112;
+          const cy = 42 + ((i * 37) % 62);
+          const isGold = i % 2 === 0;
+          return (
+            <circle
+              key={i}
+              className="product-visual-sparkle"
+              cx={cx}
+              cy={cy}
+              r={2 + (i % 4) * 1.2}
+              fill={isGold ? "var(--pt-wheat-soft)" : "var(--pt-sage-500)"}
+              style={{ animationDelay: `${i * 0.35}s` }}
+            />
+          );
+        })}
       </svg>
     </div>
   );
@@ -558,21 +497,27 @@ function StarchVisual() {
       }}
     >
       <svg viewBox="0 0 240 240" width="75%" aria-hidden="true">
-        {/* Starch crystal pattern */}
-        {Array.from({ length: 14 }).map((_, i) => {
-          const a = (i / 14) * Math.PI * 2;
-          const r = 40 + (i % 3) * 22;
-          return (
-            <circle
-              key={i}
-              cx={120 + Math.cos(a) * r}
-              cy={120 + Math.sin(a) * r}
-              r={6 + (i % 4) * 3}
-              fill="var(--pt-wheat-soft)"
-              opacity={0.5 + (i % 3) * 0.2}
-            />
-          );
-        })}
+        {/* Starch crystal pattern — slowly orbits the core */}
+        <g className="product-visual-spin" style={{ transformOrigin: "120px 120px" }}>
+          {Array.from({ length: 14 }).map((_, i) => {
+            const a = (i / 14) * Math.PI * 2;
+            const r = 40 + (i % 3) * 22;
+            const cx = 120 + Math.cos(a) * r;
+            const cy = 120 + Math.sin(a) * r;
+            return (
+              <circle
+                key={i}
+                className="product-visual-pulse"
+                cx={cx}
+                cy={cy}
+                r={6 + (i % 4) * 3}
+                fill="var(--pt-wheat-soft)"
+                opacity={0.5 + (i % 3) * 0.2}
+                style={{ transformOrigin: `${cx}px ${cy}px`, animationDelay: `${i * 0.18}s` }}
+              />
+            );
+          })}
+        </g>
         <circle cx="120" cy="120" r="28" fill="var(--pt-wheat-soft)" />
         <circle cx="120" cy="120" r="12" fill="var(--pt-sage-700)" />
       </svg>

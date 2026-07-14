@@ -18,10 +18,10 @@ export function FeatureRow({
       >
         {String(index).padStart(2, "0")}
       </div>
-      <h3 className="mt-4 text-lg font-semibold" style={{ color: "#2d3a2b" }}>
+      <h3 className="mt-4 text-lg font-semibold" style={{ color: "#0f2f66" }}>
         {title}
       </h3>
-      <p className="mt-2 text-sm leading-relaxed" style={{ color: "#5a6b58" }}>
+      <p className="mt-2 text-sm leading-relaxed" style={{ color: "#54647c" }}>
         {desc}
       </p>
     </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useReveal } from "@/hooks/useReveal";
+import { useT } from "@/lib/i18n/useT";
 
 const PARTNERS: { name: string; initials: string }[] = [
   { name: "SAIGON BAKERY Co.", initials: "SB" },
@@ -52,6 +53,7 @@ function PartnerLogo({ initials }: { initials: string }) {
 export function TrustStrip() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [isPaused, setIsPaused] = useState(false);
+  const t = useT();
 
   return (
     <section
@@ -72,14 +74,14 @@ export function TrustStrip() {
             className="text-xs font-medium uppercase tracking-[0.2em]"
             style={{ color: "var(--pt-ink-soft)" }}
           >
-            Tin dùng bởi 200+ đối tác trong và ngoài nước
+            {t.trustStrip.label}
           </p>
 
           {/* WCAG 2.2.2 SC 2.2.2 — manual pause/play control */}
           <button
             type="button"
             onClick={() => setIsPaused((p) => !p)}
-            aria-label={isPaused ? "Phát chuyển động đối tác" : "Tạm dừng chuyển động đối tác"}
+            aria-label={isPaused ? t.trustStrip.play : t.trustStrip.pause}
             aria-pressed={isPaused}
             suppressHydrationWarning
             style={{

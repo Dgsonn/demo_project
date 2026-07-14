@@ -2,7 +2,7 @@
  * ProductTile — per R3 consensus field priority:
  * 1. Eyebrow (segment)
  * 2. Product name
- * 3. Spec highlight (protein pill badge) — most prominent
+ * 3. Spec highlight (spec pill badge) — most prominent
  * 4. Cert badges row (ISO 22000, HACCP, FDA) — visually prominent
  * 5. Application tagline
  * 6. Bullets (de-emphasized)
@@ -29,7 +29,7 @@ type Props = {
   href: string;
   eyebrow: string;
   title: string;
-  /** e.g. "11% Protein" — shown as prominent pill badge */
+  /** e.g. "90% Độ trắng" — shown as prominent pill badge */
   specHighlight?: string;
   /** Cert badges shown as icons row */
   certBadges?: CertBadge[];
@@ -60,15 +60,16 @@ export function ProductTile({
 
   return (
     <article
-      className="pt-card relative overflow-hidden rounded-3xl group"
+      className="pt-card relative overflow-hidden rounded-3xl group flex flex-col"
       style={{
         background: dark ? "var(--pt-sage-700)" : "var(--pt-cream-deep)",
         color: dark ? "var(--pt-cream)" : "var(--pt-sage-700)",
         minHeight: 560,
       }}
     >
-      {/* Visual top — 60% */}
-      <div className="pt-card-visual relative h-[58%] w-full overflow-hidden">
+      {/* Visual top — sized off card width (aspect-ratio), never off card height —
+          avoids the circular height dependency that caused the earlier misalignment */}
+      <div className="pt-card-visual relative aspect-[3/2] w-full overflow-hidden shrink-0">
         {visual}
         <div
           className="absolute top-5 left-6 eyebrow"
@@ -78,8 +79,8 @@ export function ProductTile({
         </div>
       </div>
 
-      {/* Content — 40% */}
-      <div className="relative px-12 lg:px-14 pt-10 pb-20">
+      {/* Content — fills the rest, CTA pinned to the bottom via mt-auto below */}
+      <div className="relative px-12 lg:px-14 pt-10 pb-20 flex-1 flex flex-col">
         {/* 1. Product name */}
         <h3 className="headline-md">{title}</h3>
 
@@ -89,9 +90,9 @@ export function ProductTile({
             <span
               className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold"
               style={{
-                background: dark ? "rgba(163,193,148,0.2)" : "color-mix(in srgb, var(--pt-sage-500) 15%, transparent)",
+                background: dark ? "rgba(127,168,221,0.2)" : "color-mix(in srgb, var(--pt-sage-500) 15%, transparent)",
                 color: accentColor,
-                border: `1px solid ${dark ? "rgba(163,193,148,0.35)" : "rgba(93,138,77,0.25)"}`,
+                border: `1px solid ${dark ? "rgba(127,168,221,0.35)" : "rgba(26,74,156,0.25)"}`,
               }}
               aria-label={`Thông số: ${specHighlight}`}
             >
@@ -115,9 +116,9 @@ export function ProductTile({
                   role="listitem"
                   className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-medium"
                   style={{
-                    background: dark ? "rgba(163,193,148,0.15)" : "rgba(93,138,77,0.08)",
+                    background: dark ? "rgba(127,168,221,0.15)" : "rgba(26,74,156,0.08)",
                     color: certColor,
-                    border: `1px solid ${dark ? "rgba(232,212,168,0.3)" : "rgba(93,138,77,0.2)"}`,
+                    border: `1px solid ${dark ? "rgba(245,197,24,0.3)" : "rgba(26,74,156,0.2)"}`,
                   }}
                 >
                   <span
@@ -152,7 +153,7 @@ export function ProductTile({
         </ul>
 
         {/* 6+7. CTAs */}
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-auto pt-6 flex flex-wrap gap-3">
           <Link
             href={href}
             className={dark ? "btn-light-primary" : "btn-primary"}
@@ -177,7 +178,7 @@ export function ProductTile({
             </svg>
           </Link>
           <Link
-            href="/#lien-he"
+            href="/#yeu-cau-mau"
             className={dark ? "btn-light-secondary" : "btn-secondary"}
             aria-label={`${ctaSecondary} — ${title}`}
           >

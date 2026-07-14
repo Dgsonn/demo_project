@@ -1,45 +1,23 @@
+"use client";
+
 /**
  * QualityGrid — per R3 consensus:
  *  - 3-column grid desktop, 1-column mobile
  *  - Per cert card: 64x64 logo, name, one-line description,
  *    "Tải chứng chỉ PDF" link, bottom CTA "Yêu cầu Technical Data Sheet đầy đủ"
- *  - Sage palette — no navy/gold
+ *  - Blue/gold brand palette (matches logo)
  */
 
-const CERTS = [
-  {
-    code: "ISO 22000",
-    label: "An toàn thực phẩm",
-    desc: "Hệ thống quản lý an toàn thực phẩm quốc tế — kiểm soát toàn bộ chuỗi cung ứng.",
-  },
-  {
-    code: "HACCP",
-    label: "Phân tích mối nguy",
-    desc: "7 nguyên tắc phân tích và kiểm soát các điểm nguy cơ trong sản xuất.",
-  },
-  {
-    code: "FDA",
-    label: "Tiêu chuẩn Mỹ",
-    desc: "Đáp ứng đầy đủ yêu cầu của Cục Quản lý Thực phẩm và Dược phẩm Hoa Kỳ.",
-  },
-];
-
-const STEPS = [
-  "Chọn giống lúa mì từ vùng nguyên liệu đạt chuẩn",
-  "Kiểm tra dư lượng thuốc bảo vệ thực vật khi nhập kho",
-  "Tinh chế qua dây chuyền khép kín, kiểm soát nhiệt độ",
-  "Sàng lọc hạt — loại bỏ tạp chất, đồng nhất kích thước",
-  "Kiểm tra chỉ tiêu lý hóa: protein, độ ẩm, tro",
-  "Kiểm tra chỉ tiêu vi sinh theo QCVN",
-  "Đóng gói & xuất kho với mã lô truy xuất",
-];
+import { useT } from "@/lib/i18n/useT";
 
 export function QualityGrid() {
+  const t = useT();
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
       {/* 7-step quality checklist */}
-      <ol className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3" aria-label="Bảy bước kiểm định chất lượng">
-        {STEPS.map((step, i) => (
+      <ol className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3" aria-label={t.qualitySection.eyebrow}>
+        {t.qualityGrid.steps.map((step, i) => (
           <li
             key={i}
             className="flex items-start gap-3 p-4 rounded-xl border"
@@ -73,23 +51,23 @@ export function QualityGrid() {
           }}
         >
           <p className="eyebrow" style={{ color: "var(--pt-sage-300)" }}>
-            Chứng nhận
+            {t.qualityGrid.certsLabel}
           </p>
-          <h3 className="headline-md mt-2">Đạt chuẩn quốc tế</h3>
+          <h3 className="headline-md mt-2">{t.qualityGrid.certsTitle}</h3>
 
           {/* Cert cards — 3-column grid */}
           <div
             className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4"
             role="list"
-            aria-label="Danh sách chứng chỉ"
+            aria-label={t.qualityGrid.certsLabel}
           >
-            {CERTS.map((c) => (
+            {t.qualityGrid.certs.map((c) => (
               <div
                 key={c.code}
                 className="rounded-xl p-4 flex flex-col items-center text-center gap-2"
                 style={{
-                  background: "rgba(163,193,148,0.12)",
-                  border: "1px solid rgba(163,193,148,0.2)",
+                  background: "rgba(127,168,221,0.12)",
+                  border: "1px solid rgba(127,168,221,0.2)",
                 }}
                 role="listitem"
               >
@@ -97,7 +75,7 @@ export function QualityGrid() {
                 <div
                   className="w-16 h-16 rounded-lg flex items-center justify-center shrink-0"
                   style={{
-                    background: "rgba(232,212,168,0.15)",
+                    background: "rgba(245,197,24,0.15)",
                   }}
                   aria-hidden="true"
                 >
@@ -121,9 +99,9 @@ export function QualityGrid() {
                   href="/#chat-luong"
                   className="text-xs font-medium underline underline-offset-2 mt-auto"
                   style={{ color: "var(--pt-sage-300)" }}
-                  aria-label={`Tải chứng chỉ ${c.code} PDF`}
+                  aria-label={`${t.qualityGrid.downloadCert} — ${c.code}`}
                 >
-                  Tải chứng chỉ PDF
+                  {t.qualityGrid.downloadCert}
                 </a>
               </div>
             ))}
@@ -132,11 +110,11 @@ export function QualityGrid() {
           {/* Bottom CTA */}
           <div className="mt-6">
             <a
-              href="/#lien-he"
+              href="/#yeu-cau-mau"
               className="btn-light-primary w-full justify-center"
-              aria-label="Yêu cầu Technical Data Sheet đầy đủ"
+              aria-label={t.qualityGrid.bottomCta}
             >
-              Yêu cầu Technical Data Sheet đầy đủ
+              {t.qualityGrid.bottomCta}
             </a>
           </div>
         </div>

@@ -1,0 +1,2 @@
+CREATE TYPE "public"."lead_status" AS ENUM('moi', 'da_lien_he', 'da_bao_gia', 'da_chot', 'khong_tiem_nang');--> statement-breakpoint
+ALTER TABLE "leads" ADD COLUMN "status" "lead_status" DEFAULT 'moi' NOT NULL;

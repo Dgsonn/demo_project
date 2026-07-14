@@ -11,6 +11,7 @@ import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { LangProvider } from "@/lib/i18n/LangContext";
 
 const beVietnam = Be_Vietnam_Pro({
   variable: "--font-be-vietnam",
@@ -20,7 +21,7 @@ const beVietnam = Be_Vietnam_Pro({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#5d8a4d",
+  themeColor: "#1a4a9c",
   width: "device-width",
   initialScale: 1,
 };
@@ -28,15 +29,15 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://ptflour.example.com"),
   title: {
-    default: "PT Flour — Bột mì & Bột biến tính chất lượng cao",
+    default: "PT Flour — Tinh bột sắn & Bột biến tính chất lượng cao",
     template: "%s · PT Flour",
   },
   description:
-    "Bột mì và bột biến tính đạt chuẩn ISO 22000, HACCP, FDA. Protein 11%, tinh khiết 99.9%. Xuất khẩu 40+ quốc gia. Phản hồi báo giá trong 24h.",
+    "Tinh bột sắn và bột biến tính đạt chuẩn ISO 22000, HACCP, FDA. Độ trắng 90%, tinh khiết 99.9%. Xuất khẩu 40+ quốc gia. Phản hồi báo giá trong 24h.",
   openGraph: {
-    title: "PT Flour — Bột mì & Bột biến tính",
+    title: "PT Flour — Tinh bột sắn & Bột biến tính",
     description:
-      "Bột mì và bột biến tính đạt chuẩn ISO 22000, HACCP, FDA. Xuất khẩu 40+ quốc gia.",
+      "Tinh bột sắn và bột biến tính đạt chuẩn ISO 22000, HACCP, FDA. Xuất khẩu 40+ quốc gia.",
     locale: "vi_VN",
     type: "website",
     images: [
@@ -44,15 +45,15 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "PT Flour — Bột mì & Bột biến tính xuất khẩu",
+        alt: "PT Flour — Tinh bột sắn & Bột biến tính xuất khẩu",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "PT Flour — Bột mì & Bột biến tính",
+    title: "PT Flour — Tinh bột sắn & Bột biến tính",
     description:
-      "Bột mì và bột biến tính đạt chuẩn ISO 22000, HACCP, FDA. Xuất khẩu 40+ quốc gia.",
+      "Tinh bột sắn và bột biến tính đạt chuẩn ISO 22000, HACCP, FDA. Xuất khẩu 40+ quốc gia.",
   },
 };
 
@@ -76,9 +77,11 @@ export default function RootLayout({
               "try{if(!sessionStorage.getItem('pt-cinematic-played')){var d=document.documentElement;d.classList.add('loader-playing');setTimeout(function(){d.classList.remove('loader-playing')},8000)}}catch(e){}",
           }}
         />
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <LangProvider>
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </LangProvider>
       </body>
     </html>
   );

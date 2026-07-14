@@ -17,10 +17,10 @@ export function SpecTable({
                 background: i % 2 === 0 ? "white" : "var(--pt-cream)",
               }}
             >
-              <td className="px-5 py-3.5 font-medium w-1/2" style={{ color: "#4a5a48" }}>
+              <td className="px-5 py-3.5 font-medium w-1/2" style={{ color: "#47576e" }}>
                 {r.label}
               </td>
-              <td className="px-5 py-3.5 font-medium" style={{ color: "#2d3a2b" }}>
+              <td className="px-5 py-3.5 font-medium" style={{ color: "#0f2f66" }}>
                 {r.value}
               </td>
             </tr>

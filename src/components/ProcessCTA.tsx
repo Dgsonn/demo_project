@@ -6,38 +6,20 @@
  * Per R3 consensus:
  *  - 4 steps (added Step 04: Xuất xưởng & vận chuyển)
  *  - Duration callout on Step 04: "2–3 ngày sau khi đặt hàng."
- *  - Sage palette — no navy/gold
+ *  - Blue/gold brand palette (matches logo)
  */
 
 import Link from "next/link";
 import { useReveal } from "@/hooks/useReveal";
-
-const STEPS = [
-  {
-    n: "01",
-    t: "Chọn lúa mì",
-    d: "Từ vùng nguyên liệu Đồng bằng sông Cửu Long — đạt chuẩn VietGAP.",
-  },
-  {
-    n: "02",
-    t: "Tinh chế Châu Âu",
-    d: "Dây chuyền hiện đại, kiểm soát nhiệt độ chính xác đến 0.5°C.",
-  },
-  {
-    n: "03",
-    t: "Kiểm định 7 bước",
-    d: "Đạt ISO 22000, HACCP, FDA — trước khi xuất xưởng.",
-  },
-  {
-    n: "04",
-    t: "Xuất xưởng & vận chuyển",
-    d: "Giao hàng tận nơi theo yêu cầu.",
-    callout: "2–3 ngày sau khi đặt hàng.",
-  },
-];
+import { useT } from "@/lib/i18n/useT";
 
 export function ProcessCTA() {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const t = useT();
+  const STEPS = t.processCTA.steps.map((s, i) => ({
+    n: String(i + 1).padStart(2, "0"),
+    ...s,
+  }));
 
   return (
     <section
@@ -78,7 +60,7 @@ export function ProcessCTA() {
                 transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
             >
-              Quy trình
+              {t.processCTA.eyebrow}
             </p>
             <h2
               className="headline-lg mt-3"
@@ -88,9 +70,9 @@ export function ProcessCTA() {
                 transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s",
               }}
             >
-              Bốn bước.{" "}
+              {t.processCTA.titleA}{" "}
               <span style={{ color: "var(--pt-wheat-soft)" }}>
-                Một tiêu chuẩn.
+                {t.processCTA.titleB}
               </span>
             </h2>
             <p
@@ -102,7 +84,7 @@ export function ProcessCTA() {
                 transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s",
               }}
             >
-              Từ cánh đồng đến nhà máy — từng hạt đều được truy vết và kiểm định.
+              {t.processCTA.description}
             </p>
             <div
               className="mt-8"
@@ -113,7 +95,7 @@ export function ProcessCTA() {
               }}
             >
               <Link href="/#chat-luong" className="btn-light-primary">
-                Xem quy trình chi tiết
+                {t.processCTA.cta}
                 <svg
                   width="14"
                   height="14"
