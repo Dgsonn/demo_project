@@ -8,7 +8,7 @@
 
 import type { Metadata, Viewport } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { LangProvider } from "@/lib/i18n/LangContext";

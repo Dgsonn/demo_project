@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 import { desc } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
-import { leads } from "@/lib/db/schema";
+import { leads, LEAD_STATUS_LABELS, LEAD_STATUS_COLORS } from "@/lib/db/schema";
 import { isAdminAuthenticated } from "@/lib/auth/session";
+import { PtWordmark } from "@/components/PtLogo";
 import { logoutAction } from "./actions";
 import { StatusSelect } from "./StatusSelect";
 
@@ -27,29 +28,62 @@ export default async function AdminPage() {
   const db = getDb();
   const rows = await db.select().from(leads).orderBy(desc(leads.createdAt));
 
+  const statusCounts = Object.keys(LEAD_STATUS_LABELS).map((key) => ({
+    key,
+    label: LEAD_STATUS_LABELS[key],
+    color: LEAD_STATUS_COLORS[key],
+    count: rows.filter((r) => r.status === key).length,
+  }));
+
   return (
-    <main className="min-h-screen bg-cream px-4 py-10 sm:px-8">
-      <div className="mx-auto max-w-6xl">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h1 className="text-xl font-semibold text-navy">
-              Yêu cầu khách hàng
-            </h1>
-            <p className="mt-1 text-sm text-sage-700">
-              {rows.length} yêu cầu đã gửi qua form liên hệ.
-            </p>
+    <div className="min-h-screen bg-cream">
+      <header
+        className="border-b border-sage-300/30"
+        style={{ background: "var(--pt-sage-600)" }}
+      >
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-8">
+          <PtWordmark size={44} dark />
+          <div className="flex items-center gap-3">
+            <span className="hidden text-sm font-medium text-white sm:inline">Bảng quản trị</span>
+            <form action={logoutAction}>
+              <button
+                type="submit"
+                className="rounded-full border border-white/20 px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
+              >
+                Đăng xuất
+              </button>
+            </form>
           </div>
-          <form action={logoutAction}>
-            <button type="submit" className="btn-secondary">
-              Đăng xuất
-            </button>
-          </form>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-8">
+        <h1 className="text-xl font-semibold text-navy">Yêu cầu khách hàng</h1>
+        <p className="mt-1 text-sm text-sage-700">
+          {rows.length} yêu cầu đã gửi qua form liên hệ.
+        </p>
+
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          {statusCounts.map((s) => (
+            <div
+              key={s.key}
+              className="rounded-[var(--pt-radius-lg)] border border-sage-300/30 bg-white px-4 py-3 shadow-[var(--pt-shadow-sm)]"
+            >
+              <p className="text-2xl font-bold text-navy">{s.count}</p>
+              <span
+                className="mt-1 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold"
+                style={{ background: s.color.bg, color: s.color.fg }}
+              >
+                {s.label}
+              </span>
+            </div>
+          ))}
         </div>
 
         <div className="mt-6 overflow-x-auto rounded-[var(--pt-radius-lg)] border border-sage-300/40 bg-white shadow-[var(--pt-shadow-sm)]">
           <table className="w-full min-w-[900px] border-collapse text-left text-sm">
             <thead>
-              <tr className="border-b border-sage-300/40 text-xs uppercase tracking-wide text-sage-700">
+              <tr className="border-b border-sage-300/40 bg-cream/60 text-xs uppercase tracking-wide text-sage-700">
                 <th className="px-4 py-3 font-medium">Ngày gửi</th>
                 <th className="px-4 py-3 font-medium">Khách hàng</th>
                 <th className="px-4 py-3 font-medium">Liên hệ</th>
@@ -62,13 +96,17 @@ export default async function AdminPage() {
             <tbody>
               {rows.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-sage-700">
+                  <td colSpan={7} className="px-4 py-10 text-center text-sage-700">
                     Chưa có yêu cầu nào.
                   </td>
                 </tr>
               )}
-              {rows.map((row) => (
-                <tr key={row.id} className="border-b border-sage-300/20 align-top last:border-0">
+              {rows.map((row, i) => (
+                <tr
+                  key={row.id}
+                  className="border-b border-sage-300/20 align-top last:border-0"
+                  style={{ background: i % 2 === 1 ? "var(--pt-cream)" : "white" }}
+                >
                   <td className="whitespace-nowrap px-4 py-3 text-sage-700">
                     {formatDate(row.createdAt)}
                   </td>
@@ -111,7 +149,7 @@ export default async function AdminPage() {
             </tbody>
           </table>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }

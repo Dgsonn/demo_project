@@ -182,6 +182,19 @@ export function SiteHeader() {
             >
               EN
             </button>
+            <button
+              type="button"
+              onClick={() => setLang("zh")}
+              aria-pressed={lang === "zh"}
+              suppressHydrationWarning
+              className="px-2 py-1 rounded-full transition-colors"
+              style={{
+                background: lang === "zh" ? "var(--pt-sage-500)" : "transparent",
+                color: lang === "zh" ? "white" : "var(--pt-ink-soft)",
+              }}
+            >
+              中文
+            </button>
           </div>
 
           <Link

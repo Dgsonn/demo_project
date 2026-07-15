@@ -16,6 +16,15 @@ export const LEAD_STATUS_LABELS: Record<string, string> = {
   khong_tiem_nang: "Không tiềm năng",
 };
 
+/** Badge colors per status, keyed the same as LEAD_STATUS_LABELS. */
+export const LEAD_STATUS_COLORS: Record<string, { bg: string; fg: string }> = {
+  moi: { bg: "#dce7f8", fg: "#163f85" },
+  da_lien_he: { bg: "#fdf0c7", fg: "#8a6d16" },
+  da_bao_gia: { bg: "#dce7f8", fg: "#0f2f66" },
+  da_chot: { bg: "#d6f0e2", fg: "#1a7f4f" },
+  khong_tiem_nang: { bg: "#f3dbd4", fg: "#b0341a" },
+};
+
 export const leads = pgTable("leads", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),

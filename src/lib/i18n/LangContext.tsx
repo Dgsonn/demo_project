@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-export type Lang = "vi" | "en";
+export type Lang = "vi" | "en" | "zh";
 
 type LangContextValue = {
   lang: Lang;
@@ -18,7 +18,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (saved === "vi" || saved === "en") {
+    if (saved === "vi" || saved === "en" || saved === "zh") {
       setLangState(saved);
       document.documentElement.lang = saved;
     }

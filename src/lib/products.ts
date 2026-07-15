@@ -129,6 +129,50 @@ export const PRODUCTS: Product[] = [
           { label: "Packaging", value: "25 kg / 50 kg" },
         ],
       },
+      zh: {
+        name: "Phúc Thịnh 木薯淀粉",
+        tagline: "适用于食品与工业用途的纯木薯淀粉。",
+        description:
+          "萃取自精心挑选的新鲜木薯，按照 ISO 22000 与 HACCP 标准精炼。白度高、粘度稳定——无论是传统食品加工还是工业化生产线均可适用。",
+        featuresTitle: "纯净。洁白。稳定。",
+        appsTitle: "适用于各类木薯淀粉应用场景",
+        features: [
+          {
+            title: "白度 ≥ 90%",
+            desc: "纯净无杂质——收获后 24 小时内以新鲜木薯萃取而成。",
+          },
+          {
+            title: "粘度与粘结力稳定",
+            desc: "形成均匀透明的凝胶——在加工与储存过程中保持良好质地。",
+          },
+          {
+            title: "食品安全保障",
+            desc: "通过 ISO 22000 · HACCP · SGS 认证，按生产批次可追溯。",
+          },
+        ],
+        applications: [
+          {
+            title: "河粉皮、粉丝与米线",
+            desc: "天然的韧性与透明度——无论烫煮还是晒干都不易碎裂。",
+          },
+          {
+            title: "食品加工",
+            desc: "为酱汁、汤品、馅料增稠——加热时保持光泽，不结块。",
+          },
+          {
+            title: "食品工业添加剂",
+            desc: "作为味精、葡萄糖浆、麦芽糖浆等的原料——纯度高。",
+          },
+        ],
+        specs: [
+          { label: "水分", value: "≤ 13.0%" },
+          { label: "白度", value: "≥ 90%" },
+          { label: "淀粉含量", value: "≥ 85%" },
+          { label: "pH 值", value: "4.5 – 7.0" },
+          { label: "细度（100 目筛）", value: "≥ 99%" },
+          { label: "包装规格", value: "25 公斤 / 50 公斤" },
+        ],
+      },
     },
   },
   {
@@ -222,6 +266,50 @@ export const PRODUCTS: Product[] = [
           { label: "Ash content", value: "≤ 0.5%" },
           { label: "Particle size", value: "≥ 95% through 200 µm sieve" },
           { label: "Packaging", value: "25 kg / 500 kg jumbo bag" },
+        ],
+      },
+      zh: {
+        name: "Phúc Thịnh 变性淀粉",
+        tagline: "适用于食品行业与工业制造的变性淀粉。",
+        description:
+          "通过严格控制的物理 / 酶法工艺进行变性处理——可根据应用需求定制结构（疏松、浓稠或凝胶状），确保稳定性与食品安全。",
+        featuresTitle: "可定制。稳定。安全。",
+        appsTitle: "服务于多个工业领域",
+        features: [
+          {
+            title: "特性可定制",
+            desc: "根据具体应用需求调整糊化度、稠度及凝胶能力。",
+          },
+          {
+            title: "产品结构稳定",
+            desc: "延长保质期，防止相分离，改善储存期间的感官品质。",
+          },
+          {
+            title: "符合国际标准",
+            desc: "符合 FDA、食品法典委员会（Codex Alimentarius）及国家食品添加剂标准。",
+          },
+        ],
+        applications: [
+          {
+            title: "食品行业",
+            desc: "酱汁、汤品、冰淇淋、休闲食品——控制稠度与光泽，加热时不易变性。",
+          },
+          {
+            title: "糖果与饮料行业",
+            desc: "提升松软度，稳定乳化体系，改善速溶产品的溶解性。",
+          },
+          {
+            title: "造纸与纺织行业",
+            desc: "用作粘合剂与上浆剂——以更优性能替代天然淀粉。",
+          },
+        ],
+        specs: [
+          { label: "水分", value: "≤ 13.0%" },
+          { label: "pH 值（10% 溶液）", value: "5.0 – 7.0" },
+          { label: "白度", value: "≥ 88%" },
+          { label: "灰分含量", value: "≤ 0.5%" },
+          { label: "粒径", value: "≥ 95% 通过 200 µm 筛" },
+          { label: "包装规格", value: "25 公斤 / 500 公斤集装袋" },
         ],
       },
     },

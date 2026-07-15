@@ -1,3 +1,4 @@
+import { PtWordmark } from "@/components/PtLogo";
 import { LoginForm } from "./LoginForm";
 
 export const metadata = {
@@ -6,7 +7,8 @@ export const metadata = {
 
 export default function AdminLoginPage() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-cream px-4">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-8 bg-cream px-4">
+      <PtWordmark size={40} />
       <LoginForm />
     </main>
   );
