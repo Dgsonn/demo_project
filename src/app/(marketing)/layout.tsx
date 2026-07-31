@@ -7,7 +7,7 @@
  */
 
 import type { Metadata, Viewport } from "next";
-import { Be_Vietnam_Pro } from "next/font/google";
+import { Be_Vietnam_Pro, Playfair_Display } from "next/font/google";
 import "../globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -17,6 +17,15 @@ const beVietnam = Be_Vietnam_Pro({
   variable: "--font-be-vietnam",
   subsets: ["latin", "vietnamese"],
   weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+/** Elegant italic serif for the story section's headline (supports Vietnamese diacritics). */
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin", "vietnamese"],
+  weight: ["600", "700"],
+  style: ["italic"],
   display: "swap",
 });
 
@@ -63,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className={`${beVietnam.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="vi" className={`${beVietnam.variable} ${playfair.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col bg-white text-[var(--pt-ink)]">
         {/*
           Pre-paint gate: on a true first visit, hide the hero from frame 0 so

@@ -48,253 +48,83 @@ export default function Home() {
       {/* 01 — B2B Hero */}
       <HeroHook />
 
-      {/* 02 — Manifesto section — Chapter style */}
-      <section 
-        className="section relative overflow-hidden" 
-        style={{ background: "var(--pt-cream)" }}
+      {/* 02 — Manifesto section — Story style (image + stat + script headline) */}
+      <section
+        className="section relative overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 50% at 85% 10%, color-mix(in srgb, var(--pt-wheat-soft) 22%, transparent) 0%, transparent 100%), " +
+            "radial-gradient(ellipse 55% 45% at 8% 95%, color-mix(in srgb, var(--pt-sage-400) 16%, transparent) 0%, transparent 100%), " +
+            "var(--pt-cream)",
+        }}
         aria-label="Câu chuyện Phúc Thịnh"
       >
-        {/* Background illustration - golden rice field */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
-            <defs>
-              <linearGradient id="wheatGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#e8d090"/>
-                <stop offset="30%" stopColor="#d4b060"/>
-                <stop offset="70%" stopColor="#c9a040"/>
-                <stop offset="100%" stopColor="#b08030"/>
-              </linearGradient>
-              <linearGradient id="wheatHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#f5e8c0"/>
-                <stop offset="50%" stopColor="#d4a840"/>
-                <stop offset="100%" stopColor="#b89030"/>
-              </linearGradient>
-              <linearGradient id="stalkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#9a8030"/>
-                <stop offset="50%" stopColor="#c9a850"/>
-                <stop offset="100%" stopColor="#8a7020"/>
-              </linearGradient>
-              <linearGradient id="leafGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-                <stop offset="0%" stopColor="#6a7a40"/>
-                <stop offset="50%" stopColor="#8a9a50"/>
-                <stop offset="100%" stopColor="#a0b060"/>
-              </linearGradient>
-              <linearGradient id="fieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#f5e8b0"/>
-                <stop offset="40%" stopColor="#d4a84b"/>
-                <stop offset="100%" stopColor="#b8923a"/>
-              </linearGradient>
-              <radialGradient id="sunGlow" cx="70%" cy="20%" r="50%">
-                <stop offset="0%" stopColor="#fff8e0" stopOpacity="0.4"/>
-                <stop offset="100%" stopColor="#fff8e0" stopOpacity="0"/>
-              </radialGradient>
-            </defs>
-            
-            {/* Sun glow effect */}
-            <rect x="0" y="0" width="1200" height="600" fill="url(#sunGlow)" opacity="0.5"/>
-            
-            {/* Sky with soft gradient */}
-            <rect x="0" y="0" width="1200" height="180" fill="#e8f0f8" opacity="0.4"/>
-            
-            {/* Distant mountains - soft purple/blue */}
-            <path d="M0,150 Q200,100 400,130 Q600,80 800,110 Q1000,90 1200,120 L1200,200 L0,200 Z" fill="#a8b8c8" opacity="0.25"/>
-            <path d="M0,170 Q300,130 600,150 Q900,120 1200,140 L1200,210 L0,210 Z" fill="#98a8b8" opacity="0.2"/>
-            
-            {/* Green field layer - midground with soft edge */}
-            <path d="M0,200 Q200,170 400,185 Q600,160 800,175 Q1000,165 1200,180 L1200,340 L0,340 Z" fill="#7ab86a" opacity="0.2"/>
-            
-            {/* Golden rice field - foreground with natural texture */}
-            <path d="M0,320 Q250,300 500,310 Q750,290 1000,305 Q1100,298 1200,310 L1200,600 L0,600 Z" fill="url(#fieldGrad)" opacity="0.3"/>
-            
-            {/* Wheat row lines - more subtle */}
-            {[...Array(30)].map((_, i) => (
-              <path key={`rrow${i}`} 
-                d={`M${i * 42},330 Q${i * 42 + 20},${325 + (i % 3) * 8} ${i * 42 + 15},600`}
-                stroke="#c9a840" strokeWidth="3" fill="none" opacity="0.12"
+        <RevealSection className="relative mx-auto max-w-6xl px-6 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+            {/* Left — plant illustration in a rounded card, offset two-tone block behind */}
+            <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+              <div
+                className="absolute -left-5 -top-5 w-[88%] h-[88%] rounded-[2rem]"
+                style={{
+                  background:
+                    "linear-gradient(135deg, var(--pt-sage-300) 0%, var(--pt-wheat-soft) 100%)",
+                  opacity: 0.55,
+                }}
+                aria-hidden="true"
               />
-            ))}
-            
-            {/* Left side - 4 wheat stalks (realistic style) */}
-            <g transform="translate(40, 80)" opacity="0.45">
-              {/* Wheat stalk 1 - main */}
-              <g>
-                <path d="M30,280 Q25,200 35,120 Q40,60 30,0" stroke="url(#stalkGrad)" strokeWidth="2.5" fill="none"/>
-                {/* Node */}
-                <ellipse cx="32" cy="180" rx="3" ry="2" fill="#7a6020"/>
-                {/* Leaves - using gradient */}
-                <path d="M32,200 Q-20,180 -40,150 Q-30,140 -10,160" fill="url(#leafGrad)" opacity="0.85"/>
-                <path d="M33,140 Q60,110 80,90 Q75,80 55,100" fill="url(#leafGrad)" opacity="0.75"/>
-                {/* Wheat head grains with awns */}
-                {[...Array(9)].map((_, i) => (
-                  <g key={`g1l${i}`}>
-                    <ellipse cx={20 - i*2} cy={0 + i*12} rx="5" ry="10" fill="url(#wheatHighlight)" transform={`rotate(-20, ${20-i*2}, ${i*12})`}/>
-                    <line x1={20 - i*2} y1={-8 + i*12} x2={15 - i*4} y2={-30 + i*12} stroke="#a08030" strokeWidth="0.4" opacity="0.5"/>
-                  </g>
-                ))}
-                {[...Array(9)].map((_, i) => (
-                  <g key={`g1r${i}`}>
-                    <ellipse cx={40 + i*2} cy={0 + i*12} rx="5" ry="10" fill="url(#wheatGold)" transform={`rotate(20, ${40+i*2}, ${i*12})`}/>
-                    <line x1={40 + i*2} y1={-8 + i*12} x2={45 + i*4} y2={-30 + i*12} stroke="#a08030" strokeWidth="0.4" opacity="0.5"/>
-                  </g>
-                ))}
-              </g>
-              
-              {/* Wheat stalk 2 */}
-              <g transform="translate(70, 30)">
-                <path d="M20,250 Q30,180 25,100 Q20,40 30,-20" stroke="url(#stalkGrad)" strokeWidth="2" fill="none"/>
-                <ellipse cx="24" cy="150" rx="2.5" ry="1.5" fill="#7a6020"/>
-                <path d="M24,180 Q-15,160 -35,130 Q-25,120 -5,140" fill="url(#leafGrad)" opacity="0.75"/>
-                <path d="M25,120 Q50,95 70,75 Q65,65 45,85" fill="url(#leafGrad)" opacity="0.65"/>
-                {[...Array(8)].map((_, i) => (
-                  <g key={`g2l${i}`}>
-                    <ellipse cx={12 - i*1.5} cy={-15 + i*11} rx="4.5" ry="9" fill="url(#wheatHighlight)" transform={`rotate(-18, ${12-i*1.5}, ${-15+i*11})`}/>
-                    <line x1={12 - i*1.5} y1={-22 + i*11} x2={8 - i*3} y2={-40 + i*11} stroke="#a08030" strokeWidth="0.3" opacity="0.45"/>
-                  </g>
-                ))}
-                {[...Array(8)].map((_, i) => (
-                  <g key={`g2r${i}`}>
-                    <ellipse cx={28 + i*1.5} cy={-15 + i*11} rx="4.5" ry="9" fill="url(#wheatGold)" transform={`rotate(18, ${28+i*1.5}, ${-15+i*11})`}/>
-                    <line x1={28 + i*1.5} y1={-22 + i*11} x2={32 + i*3} y2={-40 + i*11} stroke="#a08030" strokeWidth="0.3" opacity="0.45"/>
-                  </g>
-                ))}
-              </g>
-              
-              {/* Wheat stalk 3 */}
-              <g transform="translate(120, 10)">
-                <path d="M15,270 Q5,190 15,110 Q20,50 10,0" stroke="url(#stalkGrad)" strokeWidth="2" fill="none"/>
-                <ellipse cx="14" cy="170" rx="2" ry="1.5" fill="#7a6020"/>
-                <path d="M14,190 Q-20,170 -45,145 Q-35,135 -10,155" fill="url(#leafGrad)" opacity="0.75"/>
-                {[...Array(7)].map((_, i) => (
-                  <g key={`g3l${i}`}>
-                    <ellipse cx={8 - i*1.5} cy={5 + i*10} rx="4" ry="8" fill="url(#wheatHighlight)" transform={`rotate(-15, ${8-i*1.5}, ${5+i*10})`}/>
-                    <line x1={8 - i*1.5} y1={-2 + i*10} x2={5 - i*3} y2={-18 + i*10} stroke="#a08030" strokeWidth="0.3" opacity="0.4"/>
-                  </g>
-                ))}
-                {[...Array(7)].map((_, i) => (
-                  <g key={`g3r${i}`}>
-                    <ellipse cx={22 + i*1.5} cy={5 + i*10} rx="4" ry="8" fill="url(#wheatGold)" transform={`rotate(15, ${22+i*1.5}, ${5+i*10})`}/>
-                    <line x1={22 + i*1.5} y1={-2 + i*10} x2={25 + i*3} y2={-18 + i*10} stroke="#a08030" strokeWidth="0.3" opacity="0.4"/>
-                  </g>
-                ))}
-              </g>
-              
-              {/* Wheat stalk 4 - drooping */}
-              <g transform="translate(160, 40)">
-                <path d="M10,240 Q25,180 50,120 Q65,80 55,30" stroke="url(#stalkGrad)" strokeWidth="1.8" fill="none"/>
-                <path d="M15,200 Q-15,180 -35,155 Q-25,145 0,165" fill="url(#leafGrad)" opacity="0.7"/>
-                {[...Array(6)].map((_, i) => (
-                  <g key={`g4l${i}`}>
-                    <ellipse cx={40 - i*2} cy={115 + i*9} rx="3.5" ry="7" fill="url(#wheatHighlight)" transform={`rotate(-20, ${40-i*2}, ${115+i*9})`}/>
-                    <line x1={40 - i*2} y1={109 + i*9} x2={36 - i*4} y2={95 + i*9} stroke="#a08030" strokeWidth="0.25" opacity="0.4"/>
-                  </g>
-                ))}
-                {[...Array(6)].map((_, i) => (
-                  <g key={`g4r${i}`}>
-                    <ellipse cx={55 + i*2} cy={115 + i*9} rx="3.5" ry="7" fill="url(#wheatGold)" transform={`rotate(10, ${55+i*2}, ${115+i*9})`}/>
-                    <line x1={55 + i*2} y1={109 + i*9} x2={60 + i*4} y2={95 + i*9} stroke="#a08030" strokeWidth="0.25" opacity="0.4"/>
-                  </g>
-                ))}
-              </g>
-            </g>
+              <div
+                className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[var(--pt-shadow-md)]"
+                style={{
+                  background:
+                    "linear-gradient(160deg, var(--pt-cream) 0%, var(--pt-cream-deep) 100%)",
+                }}
+              >
+                <CassavaStoryVisual />
+              </div>
+            </div>
 
-            {/* Right side - 4 wheat stalks (mirrored) */}
-            <g transform="translate(900, 80)" opacity="0.45">
-              {/* Wheat stalk 1 */}
-              <g>
-                <path d="M30,280 Q25,200 35,120 Q40,60 30,0" stroke="url(#stalkGrad)" strokeWidth="2.5" fill="none"/>
-                <ellipse cx="32" cy="180" rx="3" ry="2" fill="#7a6020"/>
-                <path d="M32,200 Q-20,180 -40,150 Q-30,140 -10,160" fill="url(#leafGrad)" opacity="0.85"/>
-                <path d="M33,140 Q60,110 80,90 Q75,80 55,100" fill="url(#leafGrad)" opacity="0.75"/>
-                {[...Array(9)].map((_, i) => (
-                  <g key={`gr1l${i}`}>
-                    <ellipse cx={20 - i*2} cy={0 + i*12} rx="5" ry="10" fill="url(#wheatHighlight)" transform={`rotate(-20, ${20-i*2}, ${i*12})`}/>
-                    <line x1={20 - i*2} y1={-8 + i*12} x2={15 - i*4} y2={-30 + i*12} stroke="#a08030" strokeWidth="0.4" opacity="0.5"/>
-                  </g>
-                ))}
-                {[...Array(9)].map((_, i) => (
-                  <g key={`gr1r${i}`}>
-                    <ellipse cx={40 + i*2} cy={0 + i*12} rx="5" ry="10" fill="url(#wheatGold)" transform={`rotate(20, ${40+i*2}, ${i*12})`}/>
-                    <line x1={40 + i*2} y1={-8 + i*12} x2={45 + i*4} y2={-30 + i*12} stroke="#a08030" strokeWidth="0.4" opacity="0.5"/>
-                  </g>
-                ))}
-              </g>
-              
-              {/* Wheat stalk 2 */}
-              <g transform="translate(70, 30)">
-                <path d="M20,250 Q30,180 25,100 Q20,40 30,-20" stroke="url(#stalkGrad)" strokeWidth="2" fill="none"/>
-                <ellipse cx="24" cy="150" rx="2.5" ry="1.5" fill="#7a6020"/>
-                <path d="M24,180 Q-15,160 -35,130 Q-25,120 -5,140" fill="url(#leafGrad)" opacity="0.75"/>
-                <path d="M25,120 Q50,95 70,75 Q65,65 45,85" fill="url(#leafGrad)" opacity="0.65"/>
-                {[...Array(8)].map((_, i) => (
-                  <g key={`gr2l${i}`}>
-                    <ellipse cx={12 - i*1.5} cy={-15 + i*11} rx="4.5" ry="9" fill="url(#wheatHighlight)" transform={`rotate(-18, ${12-i*1.5}, ${-15+i*11})`}/>
-                    <line x1={12 - i*1.5} y1={-22 + i*11} x2={8 - i*3} y2={-40 + i*11} stroke="#a08030" strokeWidth="0.3" opacity="0.45"/>
-                  </g>
-                ))}
-                {[...Array(8)].map((_, i) => (
-                  <g key={`gr2r${i}`}>
-                    <ellipse cx={28 + i*1.5} cy={-15 + i*11} rx="4.5" ry="9" fill="url(#wheatGold)" transform={`rotate(18, ${28+i*1.5}, ${-15+i*11})`}/>
-                    <line x1={28 + i*1.5} y1={-22 + i*11} x2={32 + i*3} y2={-40 + i*11} stroke="#a08030" strokeWidth="0.3" opacity="0.45"/>
-                  </g>
-                ))}
-              </g>
-              
-              {/* Wheat stalk 3 */}
-              <g transform="translate(120, 10)">
-                <path d="M15,270 Q5,190 15,110 Q20,50 10,0" stroke="url(#stalkGrad)" strokeWidth="2" fill="none"/>
-                <ellipse cx="14" cy="170" rx="2" ry="1.5" fill="#7a6020"/>
-                <path d="M14,190 Q-20,170 -45,145 Q-35,135 -10,155" fill="url(#leafGrad)" opacity="0.75"/>
-                {[...Array(7)].map((_, i) => (
-                  <g key={`gr3l${i}`}>
-                    <ellipse cx={8 - i*1.5} cy={5 + i*10} rx="4" ry="8" fill="url(#wheatHighlight)" transform={`rotate(-15, ${8-i*1.5}, ${5+i*10})`}/>
-                    <line x1={8 - i*1.5} y1={-2 + i*10} x2={5 - i*3} y2={-18 + i*10} stroke="#a08030" strokeWidth="0.3" opacity="0.4"/>
-                  </g>
-                ))}
-                {[...Array(7)].map((_, i) => (
-                  <g key={`gr3r${i}`}>
-                    <ellipse cx={22 + i*1.5} cy={5 + i*10} rx="4" ry="8" fill="url(#wheatGold)" transform={`rotate(15, ${22+i*1.5}, ${5+i*10})`}/>
-                    <line x1={22 + i*1.5} y1={-2 + i*10} x2={25 + i*3} y2={-18 + i*10} stroke="#a08030" strokeWidth="0.3" opacity="0.4"/>
-                  </g>
-                ))}
-              </g>
-              
-              {/* Wheat stalk 4 */}
-              <g transform="translate(160, 40)">
-                <path d="M10,240 Q25,180 50,120 Q65,80 55,30" stroke="url(#stalkGrad)" strokeWidth="1.8" fill="none"/>
-                <path d="M15,200 Q-15,180 -35,155 Q-25,145 0,165" fill="url(#leafGrad)" opacity="0.7"/>
-                {[...Array(6)].map((_, i) => (
-                  <g key={`gr4l${i}`}>
-                    <ellipse cx={40 - i*2} cy={115 + i*9} rx="3.5" ry="7" fill="url(#wheatHighlight)" transform={`rotate(-20, ${40-i*2}, ${115+i*9})`}/>
-                    <line x1={40 - i*2} y1={109 + i*9} x2={36 - i*4} y2={95 + i*9} stroke="#a08030" strokeWidth="0.25" opacity="0.4"/>
-                  </g>
-                ))}
-                {[...Array(6)].map((_, i) => (
-                  <g key={`gr4r${i}`}>
-                    <ellipse cx={55 + i*2} cy={115 + i*9} rx="3.5" ry="7" fill="url(#wheatGold)" transform={`rotate(10, ${55+i*2}, ${115+i*9})`}/>
-                    <line x1={55 + i*2} y1={109 + i*9} x2={60 + i*4} y2={95 + i*9} stroke="#a08030" strokeWidth="0.25" opacity="0.4"/>
-                  </g>
-                ))}
-              </g>
-            </g>
-          </svg>
-        </div>
-
-        {/* Main content - centered */}
-        <RevealSection className="relative z-10 mx-auto max-w-3xl px-6 text-center py-24">
-          <SectionHeader
-            eyebrow={t.manifesto.eyebrow}
-            align="center"
-            title={
-              <>
-                {t.manifesto.titleA}
-                <br />
-                <span style={{ color: "var(--pt-sage-500)" }}>
-                  {t.manifesto.titleB}
-                </span>
-              </>
-            }
-            description={t.manifesto.description}
-          />
+            {/* Right — stat, script headline, description */}
+            <div>
+              <p className="eyebrow flex items-center gap-2">
+                <span
+                  className="inline-block w-1.5 h-1.5 rounded-full"
+                  style={{ background: "var(--pt-wheat-soft)" }}
+                  aria-hidden="true"
+                />
+                {t.manifesto.eyebrow}
+              </p>
+              <p
+                className="mt-4 text-5xl sm:text-6xl font-bold"
+                style={{ color: "var(--pt-sage-700)", fontFamily: "var(--font-playfair)" }}
+              >
+                {t.manifesto.statValue}
+              </p>
+              <p className="mt-3 max-w-xs text-base text-[var(--pt-ink-soft)]">
+                {t.manifesto.statLabel}
+              </p>
+              <p
+                className="mt-8 text-3xl sm:text-4xl italic"
+                style={{
+                  fontFamily: "var(--font-playfair)",
+                  color: "var(--pt-sage-600)",
+                  lineHeight: 1.25,
+                }}
+              >
+                {t.manifesto.titleA} {t.manifesto.titleB}
+              </p>
+              <span
+                className="mt-5 block h-[3px] w-16 rounded-full"
+                style={{
+                  background:
+                    "linear-gradient(90deg, var(--pt-wheat-soft), var(--pt-sage-400))",
+                }}
+                aria-hidden="true"
+              />
+              <p className="mt-6 max-w-md text-base text-[var(--pt-ink-soft)]">
+                {t.manifesto.description}
+              </p>
+            </div>
+          </div>
         </RevealSection>
       </section>
 
@@ -407,8 +237,118 @@ export default function Home() {
 }
 
 /* =============================
-   Inline product visuals (SVG)
+   Inline story / product visuals (SVG)
    ============================= */
+
+/** A single palmate cassava leaf — broad pointed leaflets fanning out from a petiole tip. */
+function CassavaLeafCluster({
+  cx,
+  cy,
+  scale = 1,
+  rotate = 0,
+}: {
+  cx: number;
+  cy: number;
+  scale?: number;
+  rotate?: number;
+}) {
+  const n = 6;
+  const spread = 300; // leaflets fan across ~300°, leaving a gap at the bottom where the petiole attaches
+  const start = -spread / 2;
+  return (
+    <g transform={`translate(${cx},${cy}) scale(${scale}) rotate(${rotate})`}>
+      {/* Petiole — short stem connecting the leaf cluster to the branch */}
+      <path d="M0,0 L0,16" stroke="url(#cassavaStem)" strokeWidth="2.5" strokeLinecap="round" />
+      {Array.from({ length: n }).map((_, i) => {
+        const angle = start + (spread / (n - 1)) * i;
+        const len = 46 + (i % 2 === 0 ? 6 : -4);
+        const w = len * 0.34;
+        return (
+          <path
+            key={i}
+            d={`M0,0 C${-w},${-len * 0.22} ${-w * 0.8},${-len * 0.65} 0,${-len} C${w * 0.8},${-len * 0.65} ${w},${-len * 0.22} 0,0 Z`}
+            fill="url(#cassavaLeafFill)"
+            stroke="url(#cassavaLeafEdge)"
+            strokeWidth="1.4"
+            strokeLinejoin="round"
+            transform={`rotate(${angle})`}
+          />
+        );
+      })}
+    </g>
+  );
+}
+
+/** Story-section illustration — stylized cassava plant (stem, palmate leaves, fanned roots). */
+function CassavaStoryVisual() {
+  return (
+    <div className="w-full h-full flex items-center justify-center product-visual-float-sm">
+      <svg viewBox="0 0 400 420" width="80%" aria-hidden="true">
+        <defs>
+          <linearGradient id="cassavaLeafFill" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stopColor="#2c7536" />
+            <stop offset="100%" stopColor="#57ab49" />
+          </linearGradient>
+          <linearGradient id="cassavaLeafEdge" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#9de072" />
+            <stop offset="100%" stopColor="#4f9a44" />
+          </linearGradient>
+          <linearGradient id="cassavaStem" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#8a6a3e" />
+            <stop offset="100%" stopColor="#6b4d29" />
+          </linearGradient>
+          <linearGradient id="cassavaRoot" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#ab8a5c" />
+            <stop offset="100%" stopColor="#7a5c36" />
+          </linearGradient>
+        </defs>
+
+        {/* Ground shadow */}
+        <ellipse cx="200" cy="404" rx="95" ry="10" fill="var(--pt-sage-700)" opacity="0.1" />
+
+        {/* Roots — fan out from the base */}
+        {[-78, -50, -24, 0, 24, 50, 78].map((dx, i) => (
+          <path
+            key={i}
+            d={`M200,356 Q${200 + dx * 0.5},386 ${200 + dx},408`}
+            stroke="url(#cassavaRoot)"
+            strokeWidth={12 - Math.abs(i - 3) * 1.4}
+            fill="none"
+            strokeLinecap="round"
+          />
+        ))}
+
+        {/* Main trunk */}
+        <path
+          d="M200,360 Q193,270 205,190 Q211,132 196,64"
+          stroke="url(#cassavaStem)"
+          strokeWidth="11"
+          fill="none"
+          strokeLinecap="round"
+        />
+        {/* Bark texture lines */}
+        <path d="M195,330 Q191,270 199,214" stroke="#5a3f20" strokeWidth="1" fill="none" opacity="0.3" />
+        <path d="M205,300 Q209,250 203,206" stroke="#5a3f20" strokeWidth="1" fill="none" opacity="0.3" />
+
+        {/* Branches */}
+        <path d="M203,268 Q168,244 138,208" stroke="url(#cassavaStem)" strokeWidth="6.5" fill="none" strokeLinecap="round" />
+        <path d="M202,206 Q160,196 122,166" stroke="url(#cassavaStem)" strokeWidth="6" fill="none" strokeLinecap="round" />
+        <path d="M203,150 Q246,132 276,104" stroke="url(#cassavaStem)" strokeWidth="6.5" fill="none" strokeLinecap="round" />
+        <path d="M201,108 Q238,92 262,66" stroke="url(#cassavaStem)" strokeWidth="5.5" fill="none" strokeLinecap="round" />
+        <path d="M198,326 Q152,320 112,296" stroke="url(#cassavaStem)" strokeWidth="6" fill="none" strokeLinecap="round" />
+
+        {/* Leaf clusters — layered from back to front, filling the silhouette */}
+        <CassavaLeafCluster cx={112} cy={292} scale={0.82} rotate={100} />
+        <CassavaLeafCluster cx={138} cy={204} scale={0.95} rotate={110} />
+        <CassavaLeafCluster cx={122} cy={162} scale={0.78} rotate={125} />
+        <CassavaLeafCluster cx={196} cy={60} scale={0.8} rotate={5} />
+        <CassavaLeafCluster cx={262} cy={62} scale={0.9} rotate={-40} />
+        <CassavaLeafCluster cx={276} cy={100} scale={1.05} rotate={-55} />
+        <CassavaLeafCluster cx={203} cy={146} scale={0.7} rotate={-15} />
+      </svg>
+    </div>
+  );
+}
 
 function StarchMoundVisual() {
   return (

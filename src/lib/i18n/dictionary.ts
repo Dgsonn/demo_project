@@ -37,6 +37,8 @@ export const dictionary = {
     },
     manifesto: {
       eyebrow: "Câu chuyện",
+      statValue: "20+",
+      statLabel: "năm từ những vùng nguyên liệu sắn đặc trưng của Việt Nam",
       titleA: "Một dòng. Một hạt.",
       titleB: "Một tiêu chuẩn.",
       description:
@@ -240,6 +242,8 @@ export const dictionary = {
     },
     manifesto: {
       eyebrow: "Our Story",
+      statValue: "20+",
+      statLabel: "years sourcing from Vietnam's finest cassava growing regions",
       titleA: "One line. One grain.",
       titleB: "One standard.",
       description:
@@ -444,6 +448,8 @@ export const dictionary = {
     },
     manifesto: {
       eyebrow: "品牌故事",
+      statValue: "20+",
+      statLabel: "年深耕越南优质木薯产区",
       titleA: "一条产线，一颗淀粉。",
       titleB: "同一标准。",
       description:
