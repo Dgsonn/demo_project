@@ -16,7 +16,7 @@ const beVietnam = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Quản trị — Phúc Thịnh Flour",
+  title: "Quản trị — Phúc Thái Flour",
   robots: { index: false, follow: false },
 };
 

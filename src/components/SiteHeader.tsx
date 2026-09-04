@@ -71,7 +71,7 @@ export function SiteHeader() {
       }}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-16 flex items-center justify-between">
-        <Link href="/" aria-label="Phúc Thịnh Flour — Trang chủ" className="flex items-center gap-2.5 header-logo-pulse">
+        <Link href="/" aria-label="Phúc Thái Flour — Trang chủ" className="flex items-center gap-2.5 header-logo-pulse">
           <span data-pt-header-logo className="flex items-center">
             <PtLogo variant="icon" height={32} />
           </span>

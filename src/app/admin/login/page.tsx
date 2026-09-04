@@ -2,7 +2,7 @@ import { PtWordmark } from "@/components/PtLogo";
 import { LoginForm } from "./LoginForm";
 
 export const metadata = {
-  title: "Đăng nhập quản trị — Phúc Thịnh Flour",
+  title: "Đăng nhập quản trị — Phúc Thái Flour",
 };
 
 export default function AdminLoginPage() {

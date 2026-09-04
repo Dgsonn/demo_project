@@ -8,7 +8,7 @@ import { logoutAction } from "./actions";
 import { StatusSelect } from "./StatusSelect";
 
 export const metadata = {
-  title: "Quản trị yêu cầu khách hàng — Phúc Thịnh Flour",
+  title: "Quản trị yêu cầu khách hàng — Phúc Thái Flour",
 };
 
 export const dynamic = "force-dynamic";

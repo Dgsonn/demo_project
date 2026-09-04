@@ -62,7 +62,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10">
           <div className="col-span-2">
-            {/* Wordmark: tên "Phúc Thịnh" + Flour + icon lục giác (màu thật) */}
+            {/* Wordmark: tên "Phúc Thái" + Flour + icon lục giác (màu thật) */}
             <PtWordmark size={36} dark />
             <p className="mt-4 max-w-sm text-sm leading-relaxed opacity-80">
               {t.footer.description}
@@ -141,11 +141,11 @@ export function SiteFooter() {
               </li>
               <li>
                 <a
-                  href="mailto:sales@ptflour.vn"
+                  href="mailto:sales@ptthai.vn"
                   className="opacity-80 hover:opacity-100 hover:text-[var(--pt-wheat-soft)] transition"
-                  aria-label="Gửi email đến sales@ptflour.vn"
+                  aria-label="Gửi email đến sales@ptthai.vn"
                 >
-                  sales@ptflour.vn
+                  sales@ptthai.vn
                 </a>
               </li>
               <li>

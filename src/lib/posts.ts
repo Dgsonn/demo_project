@@ -23,15 +23,15 @@ export const POSTS: Post[] = [
   {
     slug: "chung-nhan-iso-22000-day-chuyen-moi",
     category: "Tin công ty",
-    title: "Phúc Thịnh đạt chứng nhận ISO 22000:2018 cho dây chuyền sản xuất mới",
+    title: "Phúc Thái đạt chứng nhận ISO 22000:2018 cho dây chuyền sản xuất mới",
     date: "2026-07-15",
     excerpt:
-      "Dây chuyền chế biến tinh bột sắn mới của Phúc Thịnh chính thức được cấp chứng nhận ISO 22000:2018, nâng công suất và củng cố tiêu chuẩn an toàn thực phẩm.",
+      "Dây chuyền chế biến tinh bột sắn mới của Phúc Thái chính thức được cấp chứng nhận ISO 22000:2018, nâng công suất và củng cố tiêu chuẩn an toàn thực phẩm.",
     body: [
-      "Sau hơn sáu tháng đầu tư và vận hành thử nghiệm, dây chuyền chế biến tinh bột sắn mới của Phúc Thịnh đã chính thức được cấp chứng nhận ISO 22000:2018 — tiêu chuẩn quốc tế về hệ thống quản lý an toàn thực phẩm.",
+      "Sau hơn sáu tháng đầu tư và vận hành thử nghiệm, dây chuyền chế biến tinh bột sắn mới của Phúc Thái đã chính thức được cấp chứng nhận ISO 22000:2018 — tiêu chuẩn quốc tế về hệ thống quản lý an toàn thực phẩm.",
       "Dây chuyền mới giúp nâng công suất chế biến, đồng thời bổ sung các điểm kiểm soát tới hạn (CCP) trong từng công đoạn, từ tiếp nhận nguyên liệu, rửa, nghiền, tách bã cho đến sấy và đóng gói thành phẩm.",
-      "Việc đạt chứng nhận không chỉ là yêu cầu bắt buộc với nhiều khách hàng công nghiệp và xuất khẩu, mà còn là cam kết của Phúc Thịnh về chất lượng ổn định giữa các lô sản xuất, giúp khách hàng an tâm hơn khi đưa nguyên liệu vào chuỗi sản xuất của mình.",
-      "Trong thời gian tới, Phúc Thịnh tiếp tục lộ trình hoàn thiện hệ thống kiểm định nội bộ, hướng tới các chứng nhận bổ sung theo yêu cầu của thị trường xuất khẩu.",
+      "Việc đạt chứng nhận không chỉ là yêu cầu bắt buộc với nhiều khách hàng công nghiệp và xuất khẩu, mà còn là cam kết của Phúc Thái về chất lượng ổn định giữa các lô sản xuất, giúp khách hàng an tâm hơn khi đưa nguyên liệu vào chuỗi sản xuất của mình.",
+      "Trong thời gian tới, Phúc Thái tiếp tục lộ trình hoàn thiện hệ thống kiểm định nội bộ, hướng tới các chứng nhận bổ sung theo yêu cầu của thị trường xuất khẩu.",
     ],
   },
   {
@@ -45,7 +45,7 @@ export const POSTS: Post[] = [
       "Tinh bột tự nhiên có một số hạn chế khi dùng trong sản xuất công nghiệp quy mô lớn: độ nhớt không ổn định khi gia nhiệt, dễ thoái hóa khi bảo quản lạnh, và khó kiểm soát kết cấu theo từng loại sản phẩm.",
       "Bột biến tính giải quyết các hạn chế này bằng cách xử lý tinh bột qua phương pháp vật lý hoặc enzyme được kiểm soát chặt chẽ, giúp tùy biến độ hồ hóa, độ đặc và khả năng tạo gel theo đúng yêu cầu của từng ứng dụng — mà không cần dùng đến hóa chất biến tính.",
       "Nhờ vậy, bột biến tính giữ được cấu trúc ổn định hơn qua quá trình chế biến, cấp đông – rã đông, và bảo quản dài ngày. Đây là lý do nhiều nhà máy sản xuất sốt, súp, kem, bánh kẹo và đồ uống hòa tan chuyển sang sử dụng bột biến tính thay cho tinh bột thường.",
-      "Tại Phúc Thịnh, dòng bột biến tính được sản xuất theo tiêu chuẩn FDA và Codex Alimentarius, phù hợp cho cả ngành thực phẩm lẫn một số ứng dụng công nghiệp như giấy và dệt may.",
+      "Tại Phúc Thái, dòng bột biến tính được sản xuất theo tiêu chuẩn FDA và Codex Alimentarius, phù hợp cho cả ngành thực phẩm lẫn một số ứng dụng công nghiệp như giấy và dệt may.",
     ],
   },
   {
@@ -65,16 +65,16 @@ export const POSTS: Post[] = [
     ],
   },
   {
-    slug: "phuc-thinh-tham-gia-hoi-cho-xuat-khau",
+    slug: "phuc-thai-tham-gia-hoi-cho-xuat-khau",
     category: "Tin công ty",
-    title: "Phúc Thịnh tham gia hội chợ triển lãm ngành thực phẩm khu vực",
+    title: "Phúc Thái tham gia hội chợ triển lãm ngành thực phẩm khu vực",
     date: "2026-03-20",
     excerpt:
-      "Gian hàng của Phúc Thịnh giới thiệu dòng sản phẩm tinh bột sắn và bột biến tính đạt chuẩn xuất khẩu tới các nhà mua hàng quốc tế.",
+      "Gian hàng của Phúc Thái giới thiệu dòng sản phẩm tinh bột sắn và bột biến tính đạt chuẩn xuất khẩu tới các nhà mua hàng quốc tế.",
     body: [
-      "Trong khuôn khổ hội chợ triển lãm ngành thực phẩm khu vực, gian hàng của Phúc Thịnh đã giới thiệu tới khách tham quan hai dòng sản phẩm chủ lực: tinh bột sắn nguyên chất và bột biến tính, cùng đầy đủ hồ sơ chứng nhận ISO 22000, HACCP và FDA.",
-      "Sự kiện là dịp để đội ngũ kinh doanh của Phúc Thịnh trao đổi trực tiếp với các nhà mua hàng công nghiệp đến từ nhiều thị trường, lắng nghe yêu cầu kỹ thuật cụ thể cho từng ứng dụng — từ chế biến thực phẩm truyền thống đến các dây chuyền sản xuất công nghiệp quy mô lớn.",
-      "Phúc Thịnh dự kiến tiếp tục tham gia các hội chợ chuyên ngành trong thời gian tới, đồng thời mở rộng năng lực sản xuất để đáp ứng nhu cầu ngày càng tăng từ thị trường xuất khẩu.",
+      "Trong khuôn khổ hội chợ triển lãm ngành thực phẩm khu vực, gian hàng của Phúc Thái đã giới thiệu tới khách tham quan hai dòng sản phẩm chủ lực: tinh bột sắn nguyên chất và bột biến tính, cùng đầy đủ hồ sơ chứng nhận ISO 22000, HACCP và FDA.",
+      "Sự kiện là dịp để đội ngũ kinh doanh của Phúc Thái trao đổi trực tiếp với các nhà mua hàng công nghiệp đến từ nhiều thị trường, lắng nghe yêu cầu kỹ thuật cụ thể cho từng ứng dụng — từ chế biến thực phẩm truyền thống đến các dây chuyền sản xuất công nghiệp quy mô lớn.",
+      "Phúc Thái dự kiến tiếp tục tham gia các hội chợ chuyên ngành trong thời gian tới, đồng thời mở rộng năng lực sản xuất để đáp ứng nhu cầu ngày càng tăng từ thị trường xuất khẩu.",
     ],
   },
 ];

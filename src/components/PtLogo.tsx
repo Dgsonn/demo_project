@@ -9,7 +9,7 @@
  *   - <PtLogo variant="full" />  : dùng pt-loader-logo.svg (2 dòng, có chữ PT)
  *   - <PtLogo variant="icon" />  : dùng pt-header-logo.svg (chỉ icon)
  *   - <HexMark />                : alias cho variant="icon", dùng cho hero big logo
- *   - <PtWordmark />             : icon + text "Phúc Thịnh" thật (typography riêng)
+ *   - <PtWordmark />             : icon + text "Phúc Thái" thật (typography riêng)
  */
 import * as React from "react";
 
@@ -48,7 +48,7 @@ export function PtLogo({
   return (
     <img
       src={SRC[variant]}
-      alt="Phúc Thịnh"
+      alt="Phúc Thái"
       draggable={false}
       width={size ?? Math.round(height * aspect)}
       height={height}
@@ -82,7 +82,7 @@ export function HexMark({
   );
 }
 
-/** Wordmark — icon + tên "Phúc Thịnh" + "Flour" (typography riêng) */
+/** Wordmark — icon + tên "Phúc Thái" + "Flour" (typography riêng) */
 export function PtWordmark({
   className,
   size = 32,
@@ -97,7 +97,7 @@ export function PtWordmark({
     <div
       className={className}
       style={{ display: "inline-flex", alignItems: "center", gap: 12 }}
-      aria-label="Phúc Thịnh Flour"
+      aria-label="Phúc Thái Flour"
     >
       <HexMark size={size} />
       <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}>
@@ -110,7 +110,7 @@ export function PtWordmark({
             fontFamily: "var(--font-be-vietnam), system-ui, sans-serif",
           }}
         >
-          Phúc Thịnh
+          Phúc Thái
         </span>
         <span
           style={{
@@ -142,7 +142,7 @@ export function PtHeroLogo({
   return (
     <img
       src={SRC.full}
-      alt="Phúc Thịnh Flour"
+      alt="Phúc Thái Flour"
       draggable={false}
       className={className}
       style={{

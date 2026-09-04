@@ -49,7 +49,7 @@ export async function sendLeadNotification(lead: LeadNotification) {
 
   const html = `
     <div style="font-family:sans-serif;font-size:14px;color:#1a1a1a">
-      <h2 style="margin:0 0 12px">Yêu cầu mẫu mới — Phúc Thịnh Flour</h2>
+      <h2 style="margin:0 0 12px">Yêu cầu mẫu mới — Phúc Thái Flour</h2>
       <table cellpadding="6" style="border-collapse:collapse">
         ${rows
           .map(

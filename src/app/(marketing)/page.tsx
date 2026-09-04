@@ -60,7 +60,7 @@ export default function Home() {
             "radial-gradient(ellipse 55% 45% at 8% 95%, color-mix(in srgb, var(--pt-sage-400) 16%, transparent) 0%, transparent 100%), " +
             "var(--pt-cream)",
         }}
-        aria-label="Câu chuyện Phúc Thịnh"
+        aria-label="Câu chuyện Phúc Thái"
       >
         <RevealSection className="relative mx-auto max-w-6xl px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
@@ -145,7 +145,7 @@ export default function Home() {
           />
 
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Tinh bột sắn Phúc Thịnh */}
+            {/* Tinh bột sắn Phúc Thái */}
             <ProductTile
               href="/san-pham/tinh-bot-san"
               eyebrow={t.productsSection.tinhBotSan.eyebrow}
@@ -158,7 +158,7 @@ export default function Home() {
               ctaSecondary={t.productsSection.ctaSecondary}
               visual={<StarchMoundVisual />}
             />
-            {/* Bột biến tính Phúc Thịnh */}
+            {/* Bột biến tính Phúc Thái */}
             <ProductTile
               href="/san-pham/bot-bien-tinh"
               eyebrow={t.productsSection.botBienTinh.eyebrow}

@@ -130,7 +130,7 @@ export const PRODUCTS: Product[] = [
         ],
       },
       zh: {
-        name: "Phúc Thịnh 木薯淀粉",
+        name: "Phúc Thái 木薯淀粉",
         tagline: "适用于食品与工业用途的纯木薯淀粉。",
         description:
           "萃取自精心挑选的新鲜木薯，按照 ISO 22000 与 HACCP 标准精炼。白度高、粘度稳定——无论是传统食品加工还是工业化生产线均可适用。",
@@ -269,7 +269,7 @@ export const PRODUCTS: Product[] = [
         ],
       },
       zh: {
-        name: "Phúc Thịnh 变性淀粉",
+        name: "Phúc Thái 变性淀粉",
         tagline: "适用于食品行业与工业制造的变性淀粉。",
         description:
           "通过严格控制的物理 / 酶法工艺进行变性处理——可根据应用需求定制结构（疏松、浓稠或凝胶状），确保稳定性与食品安全。",

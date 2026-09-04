@@ -14,7 +14,7 @@ export const dictionary = {
       requestSample: "Yêu cầu mẫu",
     },
     header: {
-      brandName: "Phúc Thịnh",
+      brandName: "Phúc Thái",
       brandTag: "Flour",
     },
     loader: {
@@ -53,7 +53,7 @@ export const dictionary = {
         "Từ tinh bột sắn nguyên chất đến bột biến tính công nghiệp — đáp ứng mọi nhu cầu sản xuất.",
       tinhBotSan: {
         eyebrow: "Dòng chính",
-        title: "Tinh bột sắn Phúc Thịnh",
+        title: "Tinh bột sắn Phúc Thái",
         specHighlight: "90% Độ trắng",
         tagline: "Cho bánh tráng, miến, bún và chế biến thực phẩm.",
         bullets: [
@@ -64,7 +64,7 @@ export const dictionary = {
       },
       botBienTinh: {
         eyebrow: "Dòng công nghiệp",
-        title: "Bột biến tính Phúc Thịnh",
+        title: "Bột biến tính Phúc Thái",
         specHighlight: "99.9% Tinh khiết",
         tagline: "Modified starch cho ngành thực phẩm & sản xuất.",
         bullets: [
@@ -171,7 +171,7 @@ export const dictionary = {
       description:
         "Từ củ sắn Việt, qua công nghệ hiện đại, đến tay bạn. Tinh bột sắn và bột biến tính cho ngành thực phẩm và công nghiệp.",
       colProducts: "Sản phẩm",
-      colAbout: "Về Phúc Thịnh",
+      colAbout: "Về Phúc Thái",
       colSupport: "Hỗ trợ",
       colContact: "Liên hệ",
       linkQuality: "Chất lượng & Kiểm định",
@@ -179,7 +179,7 @@ export const dictionary = {
       linkTds: "Tải TDS / COA",
       linkDealer: "Tìm đại lý",
       address: "Số 01 ĐH-NL.07, thôn Cò Mót, xã Kiên Thọ, tỉnh Thanh Hóa",
-      copyright: "Phúc Thịnh Flour. Bảo lưu mọi quyền.",
+      copyright: "Phúc Thái Flour. Bảo lưu mọi quyền.",
     },
     about: {
       eyebrow: "Về chúng tôi",
@@ -279,7 +279,7 @@ export const dictionary = {
       eyebrow: "Tin tức",
       title: "Tin tức & kiến thức ngành",
       description:
-        "Cập nhật hoạt động của Phúc Thịnh, tin tức ngành và kiến thức về tinh bột sắn, bột biến tính.",
+        "Cập nhật hoạt động của Phúc Thái, tin tức ngành và kiến thức về tinh bột sắn, bột biến tính.",
       empty: "Chưa có bài viết nào.",
       readMore: "Đọc tiếp",
       viewAll: "Xem tất cả tin tức",
@@ -307,7 +307,7 @@ export const dictionary = {
       requestSample: "Request Sample",
     },
     header: {
-      brandName: "Phuc Thinh",
+      brandName: "Phuc Thai",
       brandTag: "Flour",
     },
     loader: {
@@ -346,7 +346,7 @@ export const dictionary = {
         "From pure cassava starch to industrial modified starch — built for every production need.",
       tinhBotSan: {
         eyebrow: "Main line",
-        title: "Phuc Thinh Cassava Starch",
+        title: "Phuc Thai Cassava Starch",
         specHighlight: "90% Whiteness",
         tagline: "For rice paper, glass noodles, vermicelli and food processing.",
         bullets: [
@@ -357,7 +357,7 @@ export const dictionary = {
       },
       botBienTinh: {
         eyebrow: "Industrial line",
-        title: "Phuc Thinh Modified Starch",
+        title: "Phuc Thai Modified Starch",
         specHighlight: "99.9% Purity",
         tagline: "Modified starch for the food and manufacturing industries.",
         bullets: [
@@ -465,7 +465,7 @@ export const dictionary = {
       description:
         "From Vietnamese cassava, through modern technology, to you. Cassava starch and modified starch for the food and industrial sectors.",
       colProducts: "Products",
-      colAbout: "About Phuc Thinh",
+      colAbout: "About Phuc Thai",
       colSupport: "Support",
       colContact: "Contact",
       linkQuality: "Quality & Certification",
@@ -473,7 +473,7 @@ export const dictionary = {
       linkTds: "Download TDS / COA",
       linkDealer: "Find a Distributor",
       address: "No. 01 DH-NL.07, Co Mot village, Kien Tho commune, Thanh Hoa province, Vietnam",
-      copyright: "Phuc Thinh Flour. All rights reserved.",
+      copyright: "Phuc Thai Flour. All rights reserved.",
     },
     about: {
       eyebrow: "About Us",
@@ -573,7 +573,7 @@ export const dictionary = {
       eyebrow: "News",
       title: "News & Industry Insights",
       description:
-        "Updates on Phuc Thinh's activities, industry news, and knowledge about cassava starch and modified starch.",
+        "Updates on Phuc Thai's activities, industry news, and knowledge about cassava starch and modified starch.",
       empty: "No articles yet.",
       readMore: "Read more",
       viewAll: "View all news",
@@ -601,7 +601,7 @@ export const dictionary = {
       requestSample: "索取样品",
     },
     header: {
-      brandName: "Phúc Thịnh",
+      brandName: "Phúc Thái",
       brandTag: "Flour",
     },
     loader: {
@@ -639,7 +639,7 @@ export const dictionary = {
       description: "从纯木薯淀粉到工业变性淀粉——满足各类生产需求。",
       tinhBotSan: {
         eyebrow: "主打产品线",
-        title: "Phúc Thịnh 木薯淀粉",
+        title: "Phúc Thái 木薯淀粉",
         specHighlight: "白度 90%",
         tagline: "适用于河粉皮、粉丝、米线及食品加工。",
         bullets: [
@@ -650,7 +650,7 @@ export const dictionary = {
       },
       botBienTinh: {
         eyebrow: "工业产品线",
-        title: "Phúc Thịnh 变性淀粉",
+        title: "Phúc Thái 变性淀粉",
         specHighlight: "纯度 99.9%",
         tagline: "适用于食品与制造业的变性淀粉。",
         bullets: [
@@ -757,7 +757,7 @@ export const dictionary = {
       description:
         "源自越南木薯，通过现代工艺，直达您手中。为食品与工业领域提供木薯淀粉与变性淀粉。",
       colProducts: "产品",
-      colAbout: "关于 Phúc Thịnh",
+      colAbout: "关于 Phúc Thái",
       colSupport: "支持",
       colContact: "联系方式",
       linkQuality: "品质与检验",
@@ -765,7 +765,7 @@ export const dictionary = {
       linkTds: "下载技术数据表 / COA",
       linkDealer: "查找经销商",
       address: "越南清化省坚寿社果莫村 ĐH-NL.07 号 01",
-      copyright: "Phúc Thịnh Flour. 保留所有权利。",
+      copyright: "Phúc Thái Flour. 保留所有权利。",
     },
     about: {
       eyebrow: "关于我们",
@@ -864,7 +864,7 @@ export const dictionary = {
       eyebrow: "新闻",
       title: "新闻与行业知识",
       description:
-        "了解福盛（Phúc Thịnh）的最新动态、行业新闻以及木薯淀粉与变性淀粉相关知识。",
+        "了解 Phúc Thái 的最新动态、行业新闻以及木薯淀粉与变性淀粉相关知识。",
       empty: "暂无文章。",
       readMore: "阅读更多",
       viewAll: "查看全部新闻",

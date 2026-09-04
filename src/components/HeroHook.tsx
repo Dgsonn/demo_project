@@ -1,5 +1,5 @@
 /**
- * HeroHook — Phúc Thịnh Flour B2B hero.
+ * HeroHook — Phúc Thái Flour B2B hero.
  *
  * Features:
  * - Logo entrance animation (hero-logo-entrance)
@@ -23,7 +23,7 @@ export function HeroHook() {
         background:
           "radial-gradient(ellipse at 30% 20%, var(--pt-cream) 0%, var(--pt-cream) 40%, var(--pt-cream-deep) 100%)",
       }}
-      aria-label="Hero — Phúc Thịnh Flour"
+      aria-label="Hero — Phúc Thái Flour"
     >
       {/* Subtle grain texture */}
       <div
