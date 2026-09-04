@@ -1,4 +1,4 @@
-import { createHmac, timingSafeEqual } from "crypto";
+import { createHmac, randomBytes, scryptSync, timingSafeEqual } from "crypto";
 import { cookies } from "next/headers";
 
 export const ADMIN_SESSION_COOKIE = "pt_admin_session";
@@ -76,4 +76,37 @@ export function constantTimeEqual(a: string, b: string): boolean {
   const bBuf = Buffer.from(b);
   if (aBuf.length !== bBuf.length) return false;
   return timingSafeEqual(aBuf, bBuf);
+}
+
+const SCRYPT_KEYLEN = 64;
+
+/**
+ * Băm mật khẩu quản trị bằng scrypt (có trong Node, không cần thư viện ngoài).
+ * Kết quả dạng "salt:hash", cả hai ở hệ hex — đây là giá trị đặt vào ADMIN_PASSWORD_HASH.
+ * Sinh giá trị mới bằng: npm run admin:hash -- "mật-khẩu-của-bạn"
+ */
+export function hashAdminPassword(password: string, salt?: string): string {
+  const useSalt = salt ?? randomBytes(16).toString("hex");
+  const derived = scryptSync(password, useSalt, SCRYPT_KEYLEN).toString("hex");
+  return `${useSalt}:${derived}`;
+}
+
+/**
+ * So khớp mật khẩu người dùng nhập với giá trị băm đã lưu, theo kiểu constant-time.
+ * Trả về false nếu chuỗi băm sai định dạng, thay vì ném lỗi.
+ */
+export function verifyAdminPassword(password: string, stored: string): boolean {
+  const [salt, expected] = stored.split(":");
+  if (!salt || !expected) return false;
+
+  let derived: Buffer;
+  try {
+    derived = scryptSync(password, salt, SCRYPT_KEYLEN);
+  } catch {
+    return false;
+  }
+
+  const expectedBuf = Buffer.from(expected, "hex");
+  if (expectedBuf.length !== derived.length) return false;
+  return timingSafeEqual(derived, expectedBuf);
 }

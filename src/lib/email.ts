@@ -63,7 +63,7 @@ export async function sendLeadNotification(lead: LeadNotification) {
       </table>
     </div>`;
 
-  const { error } = await resend.emails.send({
+  const result = await resend.emails.send({
     from,
     to,
     replyTo: lead.email,
@@ -71,9 +71,22 @@ export async function sendLeadNotification(lead: LeadNotification) {
     html,
   });
 
-  if (error) {
-    throw new Error(`Resend error: ${error.message}`);
+  if (result.error) {
+    const message = result.error.message ?? String(result.error);
+    if (isResendSandboxRestrictionError(message)) {
+      console.warn(
+        "[contact] Resend sandbox restriction: notification email was not sent. " +
+          "Use a verified sender domain for CONTACT_FROM_EMAIL, or set CONTACT_NOTIFY_EMAIL " +
+          "to the Resend account email when testing with onboarding@resend.dev.",
+      );
+      return;
+    }
+    throw new Error(`Resend error: ${message}`);
   }
+}
+
+function isResendSandboxRestrictionError(message: string) {
+  return /only send testing emails to your own email address|sandbox/i.test(message);
 }
 
 function escapeHtml(s: string) {

@@ -9,6 +9,7 @@ import {
   constantTimeEqual,
   createAdminSession,
   destroyAdminSession,
+  verifyAdminPassword,
 } from "@/lib/auth/session";
 
 export type LoginState = { error?: string } | undefined;
@@ -22,12 +23,21 @@ export async function loginAction(
     return { error: "Vui lòng nhập mật khẩu." };
   }
 
-  const adminPassword = process.env.ADMIN_PASSWORD;
-  if (!adminPassword) {
-    return { error: "ADMIN_PASSWORD chưa được cấu hình trên server." };
+  // Ưu tiên mật khẩu đã băm. ADMIN_PASSWORD dạng chữ thường vẫn chạy được để
+  // không gãy cấu hình cũ, nhưng nên chuyển sang ADMIN_PASSWORD_HASH — xem .env.example.
+  const passwordHash = process.env.ADMIN_PASSWORD_HASH;
+  const plainPassword = process.env.ADMIN_PASSWORD;
+
+  let ok: boolean;
+  if (passwordHash) {
+    ok = verifyAdminPassword(password, passwordHash);
+  } else if (plainPassword) {
+    ok = constantTimeEqual(password, plainPassword);
+  } else {
+    return { error: "Chưa cấu hình mật khẩu quản trị trên server." };
   }
 
-  if (!constantTimeEqual(password, adminPassword)) {
+  if (!ok) {
     return { error: "Sai mật khẩu." };
   }
 

@@ -7,7 +7,9 @@ export const dictionary = {
       products: "Sản phẩm",
       tinhBotSan: "Tinh bột sắn",
       botBienTinh: "Bột biến tính",
+      about: "Giới thiệu",
       quality: "Chất lượng",
+      news: "Tin tức",
       contact: "Liên hệ",
       requestSample: "Yêu cầu mẫu",
     },
@@ -176,8 +178,76 @@ export const dictionary = {
       linkProcess: "Quy trình sản xuất",
       linkTds: "Tải TDS / COA",
       linkDealer: "Tìm đại lý",
-      address: "Việt Nam",
+      address: "Số 01 ĐH-NL.07, thôn Cò Mót, xã Kiên Thọ, tỉnh Thanh Hóa",
       copyright: "Phúc Thịnh Flour. Bảo lưu mọi quyền.",
+    },
+    about: {
+      eyebrow: "Về chúng tôi",
+      title: "Từ vùng nguyên liệu Việt Nam đến nhà máy của bạn",
+      lede: "Chúng tôi sản xuất và cung ứng tinh bột sắn, bột biến tính cho ngành thực phẩm và công nghiệp — với cam kết về chất lượng ổn định và khả năng truy xuất theo từng lô sản xuất.",
+      historyEyebrow: "Lịch sử hình thành",
+      historyTitle: "Những cột mốc",
+      milestones: [
+        {
+          year: "20XX",
+          title: "Thành lập công ty",
+          desc: "Khởi đầu từ vùng nguyên liệu sắn địa phương, tập trung chế biến tinh bột sắn phục vụ thị trường trong nước.",
+        },
+        {
+          year: "20XX",
+          title: "Mở rộng nhà máy",
+          desc: "Đầu tư dây chuyền chế biến hiện đại, nâng công suất và ổn định chất lượng theo từng lô sản xuất.",
+        },
+        {
+          year: "20XX",
+          title: "Đạt chứng nhận quốc tế",
+          desc: "Hoàn thiện hệ thống quản lý an toàn thực phẩm, đáp ứng yêu cầu của khách hàng công nghiệp.",
+        },
+        {
+          year: "20XX",
+          title: "Vươn ra thị trường quốc tế",
+          desc: "Đưa sản phẩm tới các nhà máy chế biến thực phẩm và công nghiệp ngoài nước.",
+        },
+      ],
+      visionLabel: "Tầm nhìn",
+      visionText:
+        "Trở thành nhà cung ứng tinh bột sắn và bột biến tính được tin cậy tại Việt Nam và khu vực, đồng hành lâu dài cùng khách hàng công nghiệp bằng chất lượng ổn định.",
+      missionLabel: "Sứ mệnh",
+      missionText:
+        "Chế biến nông sản Việt bằng công nghệ hiện đại để tạo ra nguyên liệu an toàn, đồng nhất và truy xuất được — góp phần nâng giá trị cho vùng nguyên liệu và người trồng sắn.",
+      valuesEyebrow: "Giá trị cốt lõi",
+      valuesTitle: "Bốn điều chúng tôi không đánh đổi",
+      values: [
+        {
+          title: "Chất lượng ổn định",
+          desc: "Mỗi lô hàng đều qua cùng một quy trình kiểm định, để chỉ tiêu lô sau không khác lô trước.",
+        },
+        {
+          title: "Minh bạch & truy xuất",
+          desc: "Từ vùng trồng đến bao thành phẩm đều có mã lô, sẵn sàng cung cấp COA theo yêu cầu.",
+        },
+        {
+          title: "Đồng hành cùng khách hàng",
+          desc: "Tư vấn đúng dòng sản phẩm cho từng ứng dụng, phản hồi trong vòng 24 giờ làm việc.",
+        },
+        {
+          title: "Phát triển bền vững",
+          desc: "Gắn bó lâu dài với vùng nguyên liệu, chia sẻ lợi ích cùng người trồng sắn.",
+        },
+      ],
+      orgEyebrow: "Sơ đồ tổ chức",
+      orgTitle: "Bộ máy vận hành",
+      orgNote: "Mỗi bộ phận chịu trách nhiệm một khâu trong chuỗi từ nguyên liệu đến giao hàng.",
+      orgTop: "Tổng Giám đốc",
+      orgUnits: [
+        { title: "Phòng Kinh doanh", desc: "Tư vấn, báo giá, chăm sóc khách hàng trong và ngoài nước." },
+        { title: "Phòng Sản xuất", desc: "Vận hành dây chuyền chế biến và kiểm soát công suất." },
+        { title: "Phòng Kiểm định chất lượng", desc: "Kiểm tra chỉ tiêu lý hóa, vi sinh và cấp COA theo lô." },
+        { title: "Phòng Hành chính – Kế toán", desc: "Hợp đồng, chứng từ, thanh toán và hậu cần giao hàng." },
+      ],
+      ctaTitle: "Cần trao đổi thêm về nhu cầu của bạn?",
+      ctaText: "Gửi yêu cầu mẫu hoặc báo giá, đội ngũ B2B sẽ phản hồi trong 24 giờ làm việc.",
+      ctaButton: "Yêu cầu mẫu",
     },
     notFound: {
       metaTitle: "404 — Trang không tìm thấy",
@@ -205,6 +275,24 @@ export const dictionary = {
       ctaQuoteTds: "Yêu cầu báo giá & TDS",
       ctaDealer: "Tìm đại lý",
     },
+    news: {
+      eyebrow: "Tin tức",
+      title: "Tin tức & kiến thức ngành",
+      description:
+        "Cập nhật hoạt động của Phúc Thịnh, tin tức ngành và kiến thức về tinh bột sắn, bột biến tính.",
+      empty: "Chưa có bài viết nào.",
+      readMore: "Đọc tiếp",
+      viewAll: "Xem tất cả tin tức",
+      homeEyebrow: "Tin tức",
+      homeTitle: "Tin tức mới nhất",
+      homeDescription: "Hoạt động công ty và kiến thức ngành, cập nhật thường xuyên.",
+      backToList: "Quay lại Tin tức",
+      publishedOn: "Đăng ngày",
+      ctaTitle: "Cần tư vấn thêm về sản phẩm?",
+      ctaText:
+        "Gửi yêu cầu mẫu hoặc báo giá, đội ngũ B2B sẽ phản hồi trong 24 giờ làm việc.",
+      ctaButton: "Yêu cầu mẫu",
+    },
   },
   en: {
     nav: {
@@ -212,7 +300,9 @@ export const dictionary = {
       products: "Products",
       tinhBotSan: "Cassava Starch",
       botBienTinh: "Modified Starch",
+      about: "About Us",
       quality: "Quality",
+      news: "News",
       contact: "Contact",
       requestSample: "Request Sample",
     },
@@ -382,8 +472,76 @@ export const dictionary = {
       linkProcess: "Production Process",
       linkTds: "Download TDS / COA",
       linkDealer: "Find a Distributor",
-      address: "Vietnam",
+      address: "No. 01 DH-NL.07, Co Mot village, Kien Tho commune, Thanh Hoa province, Vietnam",
       copyright: "Phuc Thinh Flour. All rights reserved.",
+    },
+    about: {
+      eyebrow: "About Us",
+      title: "From Vietnam's growing regions to your factory",
+      lede: "We produce and supply cassava starch and modified starch for the food and industrial sectors — with a commitment to consistent quality and batch-level traceability.",
+      historyEyebrow: "Our History",
+      historyTitle: "Key milestones",
+      milestones: [
+        {
+          year: "20XX",
+          title: "Company founded",
+          desc: "Started from local cassava growing regions, focused on producing cassava starch for the domestic market.",
+        },
+        {
+          year: "20XX",
+          title: "Factory expansion",
+          desc: "Invested in modern processing lines, increasing capacity and stabilizing quality batch by batch.",
+        },
+        {
+          year: "20XX",
+          title: "International certification",
+          desc: "Completed our food safety management system to meet the requirements of industrial customers.",
+        },
+        {
+          year: "20XX",
+          title: "Reaching global markets",
+          desc: "Began supplying food processing and industrial manufacturers abroad.",
+        },
+      ],
+      visionLabel: "Vision",
+      visionText:
+        "To become a trusted supplier of cassava starch and modified starch in Vietnam and the region, standing alongside industrial customers through consistent quality.",
+      missionLabel: "Mission",
+      missionText:
+        "To process Vietnamese agricultural products with modern technology, creating safe, uniform and traceable materials — adding value for our growing regions and the farmers who supply them.",
+      valuesEyebrow: "Core Values",
+      valuesTitle: "Four things we never trade away",
+      values: [
+        {
+          title: "Consistent quality",
+          desc: "Every batch passes the same inspection process, so this batch matches the last one.",
+        },
+        {
+          title: "Transparency & traceability",
+          desc: "From field to finished bag, everything carries a batch code, with COA available on request.",
+        },
+        {
+          title: "Partnership with customers",
+          desc: "We advise the right product line for each application and respond within 24 business hours.",
+        },
+        {
+          title: "Sustainable growth",
+          desc: "A long-term commitment to our growing regions, sharing the value with cassava farmers.",
+        },
+      ],
+      orgEyebrow: "Organization",
+      orgTitle: "How we are structured",
+      orgNote: "Each department owns one stage of the chain, from raw material to delivery.",
+      orgTop: "General Director",
+      orgUnits: [
+        { title: "Sales Department", desc: "Consulting, quotations and customer care at home and abroad." },
+        { title: "Production Department", desc: "Operating the processing lines and managing capacity." },
+        { title: "Quality Control Department", desc: "Testing physicochemical and microbiological parameters, issuing batch COAs." },
+        { title: "Administration & Finance", desc: "Contracts, documentation, payments and delivery logistics." },
+      ],
+      ctaTitle: "Want to discuss your requirements?",
+      ctaText: "Send a sample or quote request — our B2B team responds within 24 business hours.",
+      ctaButton: "Request Sample",
     },
     notFound: {
       metaTitle: "404 — Page Not Found",
@@ -411,6 +569,24 @@ export const dictionary = {
       ctaQuoteTds: "Get a Quote & TDS",
       ctaDealer: "Find a Distributor",
     },
+    news: {
+      eyebrow: "News",
+      title: "News & Industry Insights",
+      description:
+        "Updates on Phuc Thinh's activities, industry news, and knowledge about cassava starch and modified starch.",
+      empty: "No articles yet.",
+      readMore: "Read more",
+      viewAll: "View all news",
+      homeEyebrow: "News",
+      homeTitle: "Latest News",
+      homeDescription: "Company updates and industry knowledge, updated regularly.",
+      backToList: "Back to News",
+      publishedOn: "Published on",
+      ctaTitle: "Need more guidance on our products?",
+      ctaText:
+        "Send a sample or quote request — our B2B team responds within 24 business hours.",
+      ctaButton: "Request Sample",
+    },
   },
   zh: {
     nav: {
@@ -418,7 +594,9 @@ export const dictionary = {
       products: "产品",
       tinhBotSan: "木薯淀粉",
       botBienTinh: "变性淀粉",
+      about: "关于我们",
       quality: "品质",
+      news: "新闻",
       contact: "联系我们",
       requestSample: "索取样品",
     },
@@ -586,8 +764,76 @@ export const dictionary = {
       linkProcess: "生产流程",
       linkTds: "下载技术数据表 / COA",
       linkDealer: "查找经销商",
-      address: "越南",
+      address: "越南清化省坚寿社果莫村 ĐH-NL.07 号 01",
       copyright: "Phúc Thịnh Flour. 保留所有权利。",
+    },
+    about: {
+      eyebrow: "关于我们",
+      title: "从越南产区，直达您的工厂",
+      lede: "我们为食品与工业领域生产并供应木薯淀粉和变性淀粉——坚持品质稳定，并可按生产批次追溯。",
+      historyEyebrow: "发展历程",
+      historyTitle: "重要里程碑",
+      milestones: [
+        {
+          year: "20XX",
+          title: "公司成立",
+          desc: "从本地木薯产区起步，专注生产木薯淀粉，服务国内市场。",
+        },
+        {
+          year: "20XX",
+          title: "工厂扩建",
+          desc: "投资现代化生产线，提升产能并稳定各批次品质。",
+        },
+        {
+          year: "20XX",
+          title: "取得国际认证",
+          desc: "完善食品安全管理体系，满足工业客户的各项要求。",
+        },
+        {
+          year: "20XX",
+          title: "拓展国际市场",
+          desc: "开始向海外食品加工与工业制造企业供货。",
+        },
+      ],
+      visionLabel: "愿景",
+      visionText:
+        "成为越南及周边地区值得信赖的木薯淀粉与变性淀粉供应商，以稳定的品质与工业客户长期同行。",
+      missionLabel: "使命",
+      missionText:
+        "以现代化技术加工越南农产品，产出安全、均匀、可追溯的原料——为产区和木薯种植户创造更高价值。",
+      valuesEyebrow: "核心价值",
+      valuesTitle: "我们绝不妥协的四件事",
+      values: [
+        {
+          title: "品质稳定",
+          desc: "每一批货都经过相同的检验流程，确保后一批与前一批指标一致。",
+        },
+        {
+          title: "透明与可追溯",
+          desc: "从产区到成品袋均带批号，可按需提供批次质检报告（COA）。",
+        },
+        {
+          title: "与客户同行",
+          desc: "针对每种应用推荐合适的产品线，24 个工作小时内回复。",
+        },
+        {
+          title: "可持续发展",
+          desc: "与产区长期合作，与木薯种植户共享收益。",
+        },
+      ],
+      orgEyebrow: "组织架构",
+      orgTitle: "运营体系",
+      orgNote: "各部门分别负责从原料到交付链条中的一个环节。",
+      orgTop: "总经理",
+      orgUnits: [
+        { title: "销售部", desc: "为国内外客户提供咨询、报价与售后服务。" },
+        { title: "生产部", desc: "负责生产线运行与产能管理。" },
+        { title: "质检部", desc: "检测理化与微生物指标，出具批次质检报告。" },
+        { title: "行政财务部", desc: "负责合同、单据、结算与交付物流。" },
+      ],
+      ctaTitle: "想进一步沟通您的需求？",
+      ctaText: "提交样品或报价需求，我们的 B2B 团队将在 24 个工作小时内回复。",
+      ctaButton: "索取样品",
     },
     notFound: {
       metaTitle: "404 — 页面未找到",
@@ -613,6 +859,23 @@ export const dictionary = {
         "以上规格仅供参考。如需获取完整技术数据表及批次 COA，请联系我们的 B2B 团队。",
       ctaQuoteTds: "获取报价及技术数据表",
       ctaDealer: "查找经销商",
+    },
+    news: {
+      eyebrow: "新闻",
+      title: "新闻与行业知识",
+      description:
+        "了解福盛（Phúc Thịnh）的最新动态、行业新闻以及木薯淀粉与变性淀粉相关知识。",
+      empty: "暂无文章。",
+      readMore: "阅读更多",
+      viewAll: "查看全部新闻",
+      homeEyebrow: "新闻",
+      homeTitle: "最新新闻",
+      homeDescription: "公司动态与行业知识，定期更新。",
+      backToList: "返回新闻列表",
+      publishedOn: "发布日期",
+      ctaTitle: "需要更多产品咨询？",
+      ctaText: "提交样品或报价需求，我们的 B2B 团队将在 24 个工作小时内回复。",
+      ctaButton: "索取样品",
     },
   },
 } satisfies Record<Lang, unknown>;

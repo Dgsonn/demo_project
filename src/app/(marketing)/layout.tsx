@@ -11,7 +11,9 @@ import { Be_Vietnam_Pro, Playfair_Display } from "next/font/google";
 import "../globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { AnchorScrollHandler } from "@/components/AnchorScrollHandler";
 import { LangProvider } from "@/lib/i18n/LangContext";
+import { SITE_URL } from "@/lib/site";
 
 const beVietnam = Be_Vietnam_Pro({
   variable: "--font-be-vietnam",
@@ -36,7 +38,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ptflour.example.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "PT Flour — Tinh bột sắn & Bột biến tính chất lượng cao",
     template: "%s · PT Flour",
@@ -87,6 +89,7 @@ export default function RootLayout({
           }}
         />
         <LangProvider>
+          <AnchorScrollHandler />
           <SiteHeader />
           <main className="flex-1">{children}</main>
           <SiteFooter />

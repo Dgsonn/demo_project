@@ -16,10 +16,13 @@ import { TrustStrip } from "@/components/TrustStrip";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ProductTile } from "@/components/ProductTile";
 import { QualityGrid } from "@/components/QualityGrid";
+import { AboutContent } from "@/components/AboutContent";
+import { NewsListContent } from "@/components/news/NewsListContent";
 import { ContactCTA } from "@/components/ContactCTA";
 import { ProcessCTA } from "@/components/ProcessCTA";
 import { RevealSection } from "@/components/RevealSection";
 import { useT } from "@/lib/i18n/useT";
+import { getSortedPosts } from "@/lib/posts";
 
 function ChapterMarker({ number, label }: { number: string; label: string }) {
   return (
@@ -178,6 +181,9 @@ export default function Home() {
         <ProcessCTA />
       </RevealSection>
 
+      {/* 04b — Giới thiệu (About) — full content, merged from the former /gioi-thieu page */}
+      <AboutContent />
+
       {/* 05 — Quality Grid — Chapter style */}
       <section
         id="chat-luong"
@@ -228,7 +234,10 @@ export default function Home() {
 
       <TrustStrip />
 
-      {/* 06 — Contact CTA — Chapter style */}
+      {/* 06 — Tin tức — full list, merged from the former /tin-tuc page */}
+      <NewsListContent posts={getSortedPosts()} />
+
+      {/* 07 — Contact CTA — Chapter style */}
       <RevealSection>
         <ContactCTA />
       </RevealSection>

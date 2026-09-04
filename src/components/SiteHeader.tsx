@@ -8,11 +8,13 @@ import { useT } from "@/lib/i18n/useT";
 
 const NAV = [
   { href: "/", key: "home" as const },
+  { href: "/#gioi-thieu", key: "about" as const },
   { href: "san-pham", key: "products" as const, isDropdown: true },
   { href: "/san-pham/tinh-bot-san", key: "tinhBotSan" as const, parent: "products" },
   { href: "/san-pham/bot-bien-tinh", key: "botBienTinh" as const, parent: "products" },
-  { href: "#chat-luong", key: "quality" as const },
-  { href: "#lien-he", key: "contact" as const },
+  { href: "/#chat-luong", key: "quality" as const },
+  { href: "/#tin-tuc", key: "news" as const },
+  { href: "/#lien-he", key: "contact" as const },
 ];
 
 export function SiteHeader() {

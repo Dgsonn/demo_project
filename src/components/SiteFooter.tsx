@@ -35,8 +35,10 @@ export function SiteFooter() {
     {
       title: t.footer.colAbout,
       links: [
+        { label: t.nav.about, href: "/#gioi-thieu" },
         { label: t.footer.linkQuality, href: "/#chat-luong" },
         { label: t.footer.linkProcess, href: "/#chat-luong" },
+        { label: t.nav.news, href: "/#tin-tuc" },
       ],
     },
     {
@@ -148,7 +150,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <a
-                  href="https://maps.google.com/?q=Việt+Nam"
+                  href={`https://maps.google.com/?q=${encodeURIComponent(t.footer.address)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="opacity-80 hover:opacity-100 hover:text-[var(--pt-wheat-soft)] transition"
