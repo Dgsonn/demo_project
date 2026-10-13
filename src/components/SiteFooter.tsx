@@ -141,11 +141,11 @@ export function SiteFooter() {
               </li>
               <li>
                 <a
-                  href="mailto:sales@ptthai.vn"
+                  href="mailto:sales@phucthaijsc.com"
                   className="opacity-80 hover:opacity-100 hover:text-[var(--pt-wheat-soft)] transition"
-                  aria-label="Gửi email đến sales@ptthai.vn"
+                  aria-label="Gửi email đến sales@phucthaijsc.com"
                 >
-                  sales@ptthai.vn
+                  sales@phucthaijsc.com
                 </a>
               </li>
               <li>
